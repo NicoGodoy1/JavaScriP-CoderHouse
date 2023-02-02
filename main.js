@@ -15,83 +15,210 @@ let MotorolaEdge30fusionSE = 90000.00;
 
 
 // console.log("El valor del Motorola E20 ES:", MotorolaE20); 
-alert("Hola")
-let modeloElegido = prompt("Indica cuál modelo de celular quieres comprar: \n a) Moto E \n b) Moto G \n c) Moto Edge:" );
-modeloElegido = modeloElegido.toLowerCase()
-prompt("Usted eligió la opción", modeloElegido);
-let totalCompra = 0;
+// alert("Hola")
+// let modeloElegido = prompt("Indica cuál modelo de celular quieres comprar: \n a) Moto E \n b) Moto G \n c) Moto Edge:" );
+// modeloElegido = modeloElegido.toLowerCase()
+// prompt("Usted eligió la opción", modeloElegido);
+// let totalCompra = 0;
 
 // usar while mientras la opcion sea a b o c
-if (modeloElegido == "a"){
-    celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
-    if(celularElegido == 1 ){
-        totalCompra += MotorolaE20;
-        alert("Usted a comprado el MotorolaE20");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 2){
-        totalCompra += MotorolaE22;
-        alert("Usted a comprado el MotorolaE20");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 3){
-        totalCompra += MotorolaE32;
-        alert("Usted a comprado el MotorolaE20");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else{
-        totalCompra += MotorolaE40;
-        alert("Usted a comprado el MotorolaE20");
-        alert(`El total de la compra es ${totalCompra}`);
-    }
-}
-if (modeloElegido == "b"){
-    celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaG22  \n 2) MotorolaG32 \n 3) Motorola42 \n 4) MotorolaE52 \n 5) MotorolaG82:" ));
-    if(celularElegido == 1 ){
-        totalCompra += MotorolaG22;
-        alert("Usted a comprado el MotorolaG22");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 2){
-        totalCompra += MotorolaG32;
-        alert("Usted a comprado el MotorolaG32");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 3){
-        totalCompra += Motorola;
-        alert("Usted a comprado el MotorolaG42");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 3){
-        totalCompra += MotorolaG42;
-        alert("Usted a comprado el MotorolaG52");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else{
-        totalCompra += MotorolaG82;
-        alert("Usted a comprado el MotorolaG82");
-        alert(`El total de la compra es ${totalCompra}`);
-    }
-}
-if (modeloElegido == "c"){
-    celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaEdge30Fusion  \n 2) MotorolaEdge30Ultra \n 3) MotorolaEdge30Neo \n 4) MotorolaEdge30Pro \n 5) MotorolaEdge30FusionSe:" ));
-    if(celularElegido == 1 ){
-        totalCompra += MotorolaEdge30fusion;
-        alert("Usted a comprado el MotorolaEdge30Fusion");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 2){
-        totalCompra += MotorolaEdge30Ultra;
-        alert("Usted a comprado el MotorolaEdge30Ultra");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 3){
-        totalCompra += MotorolaEdge30Neo;
-        alert("Usted a comprado el MotorolaEdge30Neo");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else if(celularElegido == 3){
-        totalCompra += MotorolaEdge30Pro;
-        alert("Usted a comprado el MotorolaEdge30Pro");
-        alert(`El total de la compra es ${totalCompra}`);
-    }else{
-        totalCompra += MotorolaEdge30fusionSE;
-        alert(`Usted a comprado el MotorolaEdge30fusionSE`);
-        alert(`El total de la compra es ${totalCompra}`);
+alert("Hola, muy buenas tardes, ¡Bienvenido a nuestro sitio web!")
 
+function Comprar() {
+    // alert("Hola, muy buenas tardes, ¡Bienvenido a nuestro sitio web!")
+    let totalCompra = 0;
+    let modeloElegido = prompt("Indiquenos cuál familia de motorola desea comprar: \n a) Moto E \n b) Moto G \n c) Moto Edge:" );
+    modeloElegido = modeloElegido.toLowerCase()
+    prompt("Usted eligió la opción", modeloElegido);
+    while (modeloElegido == ("a" || "b" || "c")) {
+        if (modeloElegido == "a"){
+            celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
+            if(celularElegido == 1 ){
+                totalCompra += MotorolaE20;
+                alert("Usted a comprado el MotorolaE20");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 2){
+                totalCompra += MotorolaE22;
+                alert("Usted a comprado el MotorolaE20");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 3){
+                totalCompra += MotorolaE32;
+                alert("Usted a comprado el MotorolaE20");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else{
+                totalCompra += MotorolaE40;
+                alert("Usted a comprado el MotorolaE20");
+                alert(`El total de la compra es ${totalCompra}`);
+            }
+            return totalCompra
+            break
+        }
+        if (modeloElegido == "b"){
+            celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaG22  \n 2) MotorolaG32 \n 3) Motorola42 \n 4) MotorolaE52 \n 5) MotorolaG82:" ));
+            if(celularElegido == 1 ){
+                totalCompra += MotorolaG22;
+                alert("Usted a comprado el MotorolaG22");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 2){
+                totalCompra += MotorolaG32;
+                alert("Usted a comprado el MotorolaG32");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 3){
+                totalCompra += Motorola;
+                alert("Usted a comprado el MotorolaG42");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 4){
+                totalCompra += MotorolaG42;
+                alert("Usted a comprado el MotorolaG52");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else{
+                totalCompra += MotorolaG82;
+                alert("Usted a comprado el MotorolaG82");
+                alert(`El total de la compra es ${totalCompra}`);
+            }
+            return totalCompra
+            break
+        }
+        if (modeloElegido == "c"){
+            celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaEdge30Fusion  \n 2) MotorolaEdge30Ultra \n 3) MotorolaEdge30Neo \n 4) MotorolaEdge30Pro \n 5) MotorolaEdge30FusionSe:" ));
+            if(celularElegido == 1 ){
+                totalCompra += MotorolaEdge30fusion;
+                alert("Usted a comprado el MotorolaEdge30Fusion");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 2){
+                totalCompra += MotorolaEdge30Ultra;
+                alert("Usted a comprado el MotorolaEdge30Ultra");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 3){
+                totalCompra += MotorolaEdge30Neo;
+                alert("Usted a comprado el MotorolaEdge30Neo");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else if(celularElegido == 3){
+                totalCompra += MotorolaEdge30Pro;
+                alert("Usted a comprado el MotorolaEdge30Pro");
+                alert(`El total de la compra es ${totalCompra}`);
+            }else{
+                totalCompra += MotorolaEdge30fusionSE;
+                alert(`Usted a comprado el MotorolaEdge30fusionSE`);
+                alert(`El total de la compra es ${totalCompra}`);
+            }
+            return totalCompra
+            break
+        }
     }
 }
 
+function comprarOtro() {
+    agregar = parseInt(prompt("Desea agregar otro producto? \n 1) Sí. \n 2) No."))
+    if (agregar == 1) {
+        return Comprar();
+    } else {
+        alert("Muchísimas gracias por comprar en nuestro sitio.")
+    } 
+    // switch (comprarOtro) {
+    //     case (agregar == 1):
+    //         alert("Muchísimas gracias por comprar en nuestro sitio.")
+    //         break;
+
+    //     case (agregar == 2):
+    //         return Comprar()
+    //         break;
+        // default:
+        //     return "operacion no definida";
+        //     break;
+}
+
+function sumarTotales() {
+    totalFinal = ;
+    alert(`El total final es ${totalFinal}`)
+    return totalFinal
+}
+
+Comprar()
+comprarOtro()
+sumarTotales()
+
+
+// if (modeloElegido == "a"){
+//     celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
+//     if(celularElegido == 1 ){
+//         totalCompra += MotorolaE20;
+//         alert("Usted a comprado el MotorolaE20");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 2){
+//         totalCompra += MotorolaE22;
+//         alert("Usted a comprado el MotorolaE20");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 3){
+//         totalCompra += MotorolaE32;
+//         alert("Usted a comprado el MotorolaE20");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else{
+//         totalCompra += MotorolaE40;
+//         alert("Usted a comprado el MotorolaE20");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }
+// }
+// if (modeloElegido == "b"){
+//     celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaG22  \n 2) MotorolaG32 \n 3) Motorola42 \n 4) MotorolaE52 \n 5) MotorolaG82:" ));
+//     if(celularElegido == 1 ){
+//         totalCompra += MotorolaG22;
+//         alert("Usted a comprado el MotorolaG22");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 2){
+//         totalCompra += MotorolaG32;
+//         alert("Usted a comprado el MotorolaG32");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 3){
+//         totalCompra += Motorola;
+//         alert("Usted a comprado el MotorolaG42");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 4){
+//         totalCompra += MotorolaG42;
+//         alert("Usted a comprado el MotorolaG52");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else{
+//         totalCompra += MotorolaG82;
+//         alert("Usted a comprado el MotorolaG82");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }
+// }
+// if (modeloElegido == "c"){
+//     celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaEdge30Fusion  \n 2) MotorolaEdge30Ultra \n 3) MotorolaEdge30Neo \n 4) MotorolaEdge30Pro \n 5) MotorolaEdge30FusionSe:" ));
+//     if(celularElegido == 1 ){
+//         totalCompra += MotorolaEdge30fusion;
+//         alert("Usted a comprado el MotorolaEdge30Fusion");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 2){
+//         totalCompra += MotorolaEdge30Ultra;
+//         alert("Usted a comprado el MotorolaEdge30Ultra");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 3){
+//         totalCompra += MotorolaEdge30Neo;
+//         alert("Usted a comprado el MotorolaEdge30Neo");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else if(celularElegido == 3){
+//         totalCompra += MotorolaEdge30Pro;
+//         alert("Usted a comprado el MotorolaEdge30Pro");
+//         alert(`El total de la compra es ${totalCompra}`);
+//     }else{
+//         totalCompra += MotorolaEdge30fusionSE;
+//         alert(`Usted a comprado el MotorolaEdge30fusionSE`);
+//         alert(`El total de la compra es ${totalCompra}`);
+
+//     }
+// }
+// let num1 = 0
+// let num2 = 0
+// num1 = parseInt(prompt("Ingrese el valor del num1: "));
+// num2 = parseInt(prompt("Ingrese el valor del num2: "));
+// function sumar(num1, num2){
+//     num1 = parseInt(prompt("Ingrese el valor del num1: "));
+//     num2 = parseInt(prompt("Ingrese el valor del num2: "));
+//     alert(num1 + num2)
+//     return num1 + num2;
+// }
+// sumar()
     // prompt("Usted eligió la opción", celularElegido);
     // totalCompra += celularElegido;
     // prompt("El total es", totalCompra);
