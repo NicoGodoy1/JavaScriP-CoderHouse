@@ -21,7 +21,7 @@ modeloElegido = modeloElegido.toLowerCase()
 prompt("Usted eligió la opción", modeloElegido);
 let totalCompra = 0;
 
-// usar while mientras la opcion sea mayor a cero o igual o menor a 4
+// usar while mientras la opcion sea a b o c
 if (modeloElegido == "a"){
     celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
     if(celularElegido == 1 ){
