@@ -1,20 +1,339 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primer App - CoderHouse</title>
-    <h1>Primer Desafio JavaScript</h1>
-    <script>
-      let entrada = prompt("Ingresar una letra");
-      let salida  = entrada + " " + "ingresada";
-      alert(salida);
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords" content="turismo, Chile, subsecretaría, zoits, zonas, turísticas, número, whatsapp, viajar, mar, lago, condiciones,estadísticas, requisitios, seguridad, geografía, diversidad " />
+    <meta name="description" content="Visitá la página ofical de la Subsecretaria de turismo de Chile donde vas a poder conocer lo últimos eventos, ver fotos y conocer la diversidad geográfica de Chile. " />
+    <title>ElectroTienda</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./recursos/imagenes/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./recursos/imagenes/favicon-32x32.png">
+    <!-- bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- libreria animate  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- librería AOS  -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js">
+      
+      // let entrada = prompt("Ingresar una letra");
+      // let salida  = entrada + " " + "ingresada";
+      // alert(salida);
     </script>
 </head>
 <body>
-    <h2>Esta página contiene una app</h2>
-    <script src="./main.js"></script>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./finalizarCompra.html">Ver carrito</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-warning ms-2" type="submit" ><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+  <main>
+    <!-- carousel -->
+    <section class="carouselSection">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./recursos/promoUno.webp" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/promoDos.webp" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/promoTres.webp" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/promoCuatro.webp" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <!-- tarjetas de productos  -->
+    <section class="container m-3  justify-content-center justify-content-evenly productos">
+      <div class="row">
+          <!-- producto 1 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoG82.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 2 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motorE20.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 3 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoE40.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 4 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoG52.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 5 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoG42.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 6 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoE40.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 7-->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30fusion.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 8 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30fusionSe.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 9 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30ultra.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 10 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30ultraNeo.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 10 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30ultraNeo.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+        <!-- producto 10 -->
+        <div class="col-lg-4 col-md-3 col-sm-6">
+          <div class="card tarjetas__efecto" style="width: 18rem;">
+            <img src="./recursos/productos/motoEdge30ultraNeo.png" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Celular Motorola G 128GB Negro </h5>
+              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">$44.000</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+     <hr> 
+    <!-- pié de página  -->
+    <footer class="pie-pagina">
+      <div class="container">
+        <footer class="py-5">
+          <div class="row">
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+              </ul>
+            </div>
+      
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+              </ul>
+            </div>
+      
+            <div class="col-6 col-md-2 mb-3">
+              <h5>Section</h5>
+              <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+              </ul>
+            </div>
+      
+            <div class="col-md-5 offset-md-1 mb-3">
+              <form>
+                <h5>Subscribe to our newsletter</h5>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label for="newsletter1" class="visually-hidden">Email address</label>
+                  <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                  <button class="btn btn-primary" type="button">Subscribe</button>
+                </div>
+              </form>
+            </div>
+          </div>
+      
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <p>&copy; 2022 Company, Inc. All rights reserved.</p>
+            <ul class="list-unstyled d-flex">
+              <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+              <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+              <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+    </footer>
+    <!-- bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- librería AOS javascript  -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
-
