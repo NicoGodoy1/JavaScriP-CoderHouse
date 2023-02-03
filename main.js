@@ -22,7 +22,7 @@ function Comprar() {
     let totalCompra = 0;
     let modeloElegido = prompt("Indiquenos cuál familia de motorola desea comprar: \n a) Moto E \n b) Moto G \n c) Moto Edge:" );
     modeloElegido = modeloElegido.toLowerCase()
-    while (modeloElegido == ("a" || "b" || "c")) {
+    while (modeloElegido == "a" || "b" || "c") {
         if (modeloElegido == "a"){
             celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
             if(celularElegido == 1 ){
@@ -42,9 +42,8 @@ function Comprar() {
                 alert("Usted agregó al carrito el MotorolaE20");
                 alert(`El subtotal de la compra es ${totalCompra}`);
             }
-            return totalCompra
         }
-        if (modeloElegido == "b"){
+        else if (modeloElegido == "b"){
             celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaG22  \n 2) MotorolaG32 \n 3) Motorola42 \n 4) MotorolaE52 \n 5) MotorolaG82:" ));
             if(celularElegido == 1 ){
                 totalCompra += MotorolaG22;
@@ -67,9 +66,8 @@ function Comprar() {
                 alert("Usted agregó al carrito el MotorolaG82");
                 alert(`El subtotal de la compra es ${totalCompra}`);
             }
-            return totalCompra
         }
-        if (modeloElegido == "c"){
+        else{
             celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaEdge30Fusion  \n 2) MotorolaEdge30Ultra \n 3) MotorolaEdge30Neo \n 4) MotorolaEdge30Pro \n 5) MotorolaEdge30FusionSe:" ));
             if(celularElegido == 1 ){
                 totalCompra += MotorolaEdge30fusion;
@@ -92,8 +90,9 @@ function Comprar() {
                 alert(`Usted agregó al carrito el MotorolaEdge30fusionSE`);
                 alert(`El subtotal de la compra es ${totalCompra}`);
             }
-            return totalCompra
+  
         }
+    return totalCompra
     }
 }
 
@@ -103,7 +102,7 @@ function comprarOtro() {
     let totalCompra = 0;
     let modeloElegido = prompt("Indiquenos cuál familia de motorola desea agregar: \n a) Moto E \n b) Moto G \n c) Moto Edge:" );
     if (agregar == 1) {
-        while (modeloElegido == ("a" || "b" || "c")) {
+        while (modeloElegido == "a" || "b" || "c") {
             if (modeloElegido == "a"){
                 celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaE20  \n 2) MotorolaE22 \n 3) MotorolaE32 \n 4) MotorolaE40:" ));
                 if(celularElegido == 1 ){
@@ -121,7 +120,7 @@ function comprarOtro() {
                 }
                 return totalCompra
             }
-            if (modeloElegido == "b"){
+            else if (modeloElegido == "b"){
                 celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaG22  \n 2) MotorolaG32 \n 3) Motorola42 \n 4) MotorolaE52 \n 5) MotorolaG82:" ));
                 if(celularElegido == 1 ){
                     totalCompra += MotorolaG22;
@@ -141,7 +140,7 @@ function comprarOtro() {
                 }
                 return totalCompra
             }
-            if (modeloElegido == "c"){
+            else{
                 celularElegido = parseInt(prompt("Indica cuál celular quieres comprar: \n 1) MotorolaEdge30Fusion  \n 2) MotorolaEdge30Ultra \n 3) MotorolaEdge30Neo \n 4) MotorolaEdge30Pro \n 5) MotorolaEdge30FusionSe:" ));
                 if(celularElegido == 1 ){
                     totalCompra += MotorolaEdge30fusion;
@@ -163,8 +162,9 @@ function comprarOtro() {
             }
         };
     } else {
-        totalCompra2 = 0
+        totalCompra = 0
         alert("Muchísimas gracias por comprar en nuestro sitio.")
+        return totalCompra
     } 
 }
 
@@ -173,16 +173,26 @@ let valor1 = Comprar();
 
 let valor2 = comprarOtro();
 
+
 let valorTotal = valor1 + valor2;
 
 function saberTotal() {
-    respuesta = parseInt(prompt("¿Desea saber el total de su compra? \n 1) Sí. \n 2)No."))
+    respuesta = parseInt(prompt("¿Desea saber el total de su compra? \n 1) Sí. \n 2)No. \n 3) Abandonar la compra."))
     if (respuesta == 1) {
         alert(`El total final de su compra es: ${valorTotal}`)
         alert(`Gracias por comprar en nuestro sitio`)
-        
-    } else {
-        alert("Comience nuevamente para realizar la compra")
+    }else if (respuesta == 2){
+        respuesta2= parseInt(prompt("Quiere agregar otro producto?\n 1) Sí. \n 2) No."))
+        while (respuesta2 == 1){
+            const listaPrecios = []
+            valor3= comprarOtro()
+            suma = valor3 + valor1 + valor2;
+            alert(`Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar el pedido.\n El total de su compra es ${suma}`)
+            break
+        }
+    }else {
+        alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar el pedido")
     }
 }
+
  saberTotal()
