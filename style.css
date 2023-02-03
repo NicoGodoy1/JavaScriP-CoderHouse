@@ -28,6 +28,37 @@ body {
     
 } */
 
+/* $facebook: #2279e4;
+$instagram: #c92d8f;
+$twitter: #55acee;
+$whatsapp: green;
+$email: yellow; */
+.btn-fb {
+    color: #2279e4;
+}
+.btn-fb:hover {
+    opacity: 0.5;
+}
+
+.btn-ws {
+    color: green;
+}
+.btn-ws:hover {
+    opacity: 0.5;
+}
+.btn-tw {
+    color :#55acee;
+}
+.btn-tw:hover {
+    opacity: 0.5;
+}
+.btn-ins {
+    color:  #c92d8f;
+}
+.btn-ins:hover {
+    opacity: 0.5;
+}
+
 .tarjetas__efecto {
     box-shadow: none;
     padding: 10px;
