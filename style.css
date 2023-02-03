@@ -20,19 +20,6 @@ body {
     background-color: rgb(68, 0, 153);
     opacity: 0.9;
 }
-/* .productos {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    margin: 30px;
-    
-} */
-
-/* $facebook: #2279e4;
-$instagram: #c92d8f;
-$twitter: #55acee;
-$whatsapp: green;
-$email: yellow; */
 .btn-fb {
     color: #2279e4;
 }
@@ -78,14 +65,6 @@ $email: yellow; */
 .carouselSection img {
     max-width: 100%;
 }
-/* @media (max-width: 576px) {
-    .carouselSection {
-        height: 300px;
-    }
-    .carouselSection img {
-        height: 150px;
-    }
-} */
 @media (max-width: 576px) {
     .productos {
         grid-template-columns: 1fr 1fr; 
