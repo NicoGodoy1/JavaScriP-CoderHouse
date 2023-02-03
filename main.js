@@ -172,14 +172,6 @@ function comprarOtro() {
     } 
 }
 
-
-let valor1 = Comprar();
-
-let valor2 = comprarOtro();
-
-
-let valorTotal = valor1 + valor2;
-
 function saberTotal() {
     respuesta = parseInt(prompt("¿Desea saber el total de su compra? \n 1) Sí. \n 2)No. \n 3) Abandonar la compra."))
     if (respuesta == 1) {
@@ -198,5 +190,14 @@ function saberTotal() {
         alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar el pedido")
     }
 }
+
+// Ejecución del programa principal
+
+let valor1 = Comprar();
+
+let valor2 = comprarOtro();
+
+let valorTotal = valor1 + valor2;
+
 
  saberTotal()
