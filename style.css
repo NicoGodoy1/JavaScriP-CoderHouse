@@ -35,11 +35,15 @@ body {
     box-shadow: -1px 6px 29px 6px rgba(194,184,194,1);
 }
 
-/* .carouselSection {
-    height: 100%;
-    padding: 10px;
+.carouselSection {
+    box-sizing: border-box;
+    min-height: 0px;
+    min-width: 0px;
 }
-@media (max-width: 576px) {
+.carouselSection img {
+    max-width: 100%;
+}
+/* @media (max-width: 576px) {
     .carouselSection {
         height: 300px;
     }
