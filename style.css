@@ -16,6 +16,10 @@ body {
     border-style: inset;
     border-color: rgb(68, 0, 153);;
 }
+.btn-morado:hover {
+    background-color: rgb(68, 0, 153);
+    opacity: 0.9;
+}
 /* .productos {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
