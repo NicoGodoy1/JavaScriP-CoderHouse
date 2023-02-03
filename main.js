@@ -129,7 +129,7 @@ function comprarOtro() {
                     totalCompra += MotorolaG32;
                     alert("Usted agregó al carrito el MotorolaG32");
                 }else if(celularElegido == 3){
-                    totalCompra += Motorola;
+                    totalCompra += MotorolaG42;
                     alert("Usted agregó al carrito el MotorolaG42");
                 }else if(celularElegido == 4){
                     totalCompra += MotorolaG42;
