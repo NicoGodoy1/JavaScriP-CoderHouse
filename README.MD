@@ -1,5 +1,5 @@
 # PRIMERA PRE-ENTREGA GODOY: 
-*Nombre del archivo: PFGodoy*
+*Nombre del archivo: PrimeraPre-EntregaGodoy*
 
 ## Nombre del alumno
 *Nicolás Gastón Godoy*
