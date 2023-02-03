@@ -54,7 +54,7 @@ function Comprar() {
                 alert("Usted agregó al carrito el MotorolaG32");
                 alert(`El subtotal de la compra es ${totalCompra}`);
             }else if(celularElegido == 3){
-                totalCompra += Motorola;
+                totalCompra += MotorolaG42;
                 alert("Usted agregó al carrito el MotorolaG42");
                 alert(`El subtotal de la compra es ${totalCompra}`);
             }else if(celularElegido == 4){
