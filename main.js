@@ -107,11 +107,11 @@ function ejecutarMenu () {
             while (descuento == 1 || 2 ) {
                 if (descuento == 1) {
                     sumaEfectivo = efectivo(suma);
-                    alert(`- El subtotal es ${suma} pesos.\n-El total final con 10% de descuento es ${sumaEfectivo} pesos`);
+                    alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
                     return sumaEfectivo
                 } else if (descuento == 2){
                     sumaCredito = credito(suma);
-                    alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos`)
+                    alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
                     return sumaEfectivo
                 } else {
                     alert(`No ingresó un medio correcto, vuelva a intentar`)
