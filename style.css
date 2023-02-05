@@ -19,6 +19,17 @@ body {
 .card-icon {
     height: 25px;
 }
+@media (max-width: 570px) {
+    .card-icon {
+        width: 200px;
+    }
+}
+@media (max-width: 390px) {
+    .card-icon {
+        width: 120px;
+        height: 20px;
+    }
+}
 /* ---------------------- */
 .rotarFlex {
     display: flex;
@@ -38,6 +49,13 @@ body {
     color: white;
     border-radius: 5px;
 }
+.btn-morado-buscador {
+    background-color: rgb(68, 0, 153);
+    border-color: transparent;
+    color: white;
+    border-radius: 0px 5px 5px 0px;
+    border-color: rgb(68, 0, 153);
+}
 .gradiente-morado {
     background-image: linear-gradient(-90deg, rgb(211, 0, 152), rgb(68, 0, 153));
     color: white;
@@ -46,7 +64,15 @@ body {
     border-width: 2px;
     border-style: inset;
     border-color: rgb(68, 0, 153);;
+    border-radius: 8px 8px 8px 8px;
 }
+.border-morado-buscador {
+    border-width: 2px;
+    border-style: inset;
+    border-color: rgb(68, 0, 153);;
+    border-radius: 8px 0px 0px 8px;
+}
+
 .btn-morado:hover {
     background-color: rgb(68, 0, 153);
     opacity: 0.9;
