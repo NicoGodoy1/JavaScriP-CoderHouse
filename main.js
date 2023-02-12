@@ -103,7 +103,7 @@ function ejecutarMenu () {
                 suma += Comprar();
             }
             alert(`Has finalizado la selección. El total es ${suma} pesos`)
-            descuento = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
+            descuernto = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
             while (descuento == 1 || 2 ) {
                 if (descuento == 1) {
                     sumaEfectivo = efectivo(suma);
@@ -132,3 +132,16 @@ function ejecutarMenu () {
 
 // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
+
+
+// productos.forEach(item => {
+//     let div = document.createElement("div");
+//     div.innerHTML = `
+//       <h2>Id: ${item.id}</h2>
+//       <p>Nombre: ${item.nombre}</p>
+//       <b>$${item.precio}</b>
+//       <button class="button">"Comprar"</button>
+//     `;
+  
+//     container.append(div);
+//   });
