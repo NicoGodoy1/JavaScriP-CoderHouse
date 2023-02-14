@@ -14,6 +14,68 @@ let MotorolaEdge30Pro = 85000.00;
 let MotorolaEdge30fusionSE = 90000.00; 
 
 
+// Declaracón objeto cliente
+class Producto {
+
+    constructor(nombre, precio) {
+        this.nombre =  nombre;
+        this.precio = parseFloat(precio);
+        // this.vendido = false;
+    }
+    sumarIva() {
+        alert("Hola, soy " + this.nombre)
+    }
+    vender() {
+        alert("Hola, soy " + this.nombre)
+    }
+    agregarCarrito() {
+        alert("Hola, soy " + this.nombre)
+    }
+}
+
+class Cliente {
+
+    constructor(dni, nombre, apellido, correo) {
+        this.dni =  dni
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.comprar = function() {alert("Hola, soy " + this.nombre)}
+    }
+    comprar() {
+        alert("Hola, soy " + this.nombre)
+    }
+    sumarInteres() {
+        alert("Hola, soy " + this.nombre)
+    }
+    finalizarCompra() {
+        alert("Hola, soy " + this.nombre)
+    }
+}
+
+const cliente1 = new Cliente(39329297,"Nico", "Godoy", "nicolasgastongodoy@gmail.com");
+cliente1.comprar();
+
+// variables de productos 
+const productos = [];
+productos.push (new Producto("MotorolaE20", " 35000.00"));
+productos.push (new Producto("MotorolaE40", " 40000.00"));
+productos.push (new Producto("MotorolaE32", " 45000.00"));
+productos.push (new Producto("MotorolaG22", " 50000.00"));
+productos.push (new Producto("MotorolaG32", " 55000.00"));
+productos.push (new Producto("MotorolaG42", " 60000.00"));
+productos.push (new Producto("MotorolaG52", " 65000.00"));
+productos.push (new Producto("MotorolaG82", " 70000.00"));
+productos.push (new Producto("MotorolaEdge30Ultra", " 75000.00"));
+productos.push (new Producto("MotorolaEdge30Neo", " 80000.00"));
+productos.push (new Producto("MotorolaEdge30Pro", " 85000.00"));
+productos.push (new Producto("MotorolaEdge30Fusion", " 900000.00"));
+productos.push (new Producto("MotorolaEdge30FusionSe", "95000.00"));
+
+for (producto in productos) {
+    alert(producto.)
+}
+
 alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
 
 let totalCompra = 0;
@@ -129,9 +191,15 @@ function ejecutarMenu () {
         }
     }
 }
-
 // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
+
+//funcion de orden superior
+function mayorQue(n) {
+    return (m) => m > n
+}
+
+let mayorQueDiez = mayorQue(10)
 
 
 // productos.forEach(item => {
