@@ -1,7 +1,30 @@
-//carrito vacio
-// carrito = [];
+//CARRITO VACIO ARREY
+carrito = [];
 
-// Declaracón objeto producto y cliente
+// ARRAY DE PRODUCTOS 
+const productos = [];
+productos.push (new Producto("MotoaE20", 35000.00));
+productos.push (new Producto("MotoE40", 40000.00));
+productos.push (new Producto("MotoE32", 45000.00));
+productos.push (new Producto("MotoG22", 50000.00));
+productos.push (new Producto("MotoG32", 55000.00));
+productos.push (new Producto("MotoG42", 60000.00));
+productos.push (new Producto("MotoG52", 65000.00));
+productos.push (new Producto("MotoG82", 70000.00));
+// productos.push (new Producto("MotoEdge30Ultra", 75000.00));
+// productos.push (new Producto("MotoEdge30Neo", 80000.00));
+// productos.push (new Producto("MotoEdge30Pro", 85000.00));
+// productos.push (new Producto("MotoEdge30Fusion", 900000.00));
+// productos.push (new Producto("MotoEdge30FusionSe", 95000.00));
+
+// FUNCION QUE SUMA TODOS LOS VALORES DEL CARRITO []
+function calcularTotal() {
+    const suma = carrito.reduce((partialSum, a) => partialSum + a, 0);
+    alert(suma);
+    return suma
+}
+
+// DECLARACIÓN OBJETOS: PRODUCTO Y CLIENTE
 class Producto {
 
     constructor(nombre, precio) {
@@ -16,13 +39,6 @@ class Producto {
         // carrito.push(precio)
         alert("Hola, soy " + this.nombre)
     }
-//     sumarTotal() {
-//         for (const index of carrito ) {
-//             total += 
-//             producto.vender()
-//         }
-//         alert("Hola, soy " + this.nombre)
-//     }
 }
 
 class Cliente {
@@ -32,50 +48,40 @@ class Cliente {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
-        this.comprar = function() {alert("Hola, soy " + this.nombre)}
     }
     comprar(producto) {
-        // carrito.push(producto)
-        alert("Hola, soy " + this.nombre)
+        // producto = prompt("Ingrese el producto que desea comprar: ")
+        carrito.push(producto.precio)
+        alert(`Ha agregado al carrito el celular: ${producto}`)
     }
     sumarInteres() {
         alert("Hola, soy " + this.nombre)
     }
     finalizarCompra() {
-        alert("Hola, soy " + this.nombre)
+        total = calcularTotal()
+        alert(`El total de su compra es ${total}`)
+    }
+    enviarCorreo(){
+        alert("Se le ha enviado la factura al correo "+ this.correo)
     }
 }
 
-const productos = [];
-productos.push (new Producto("MotorolaE20", 35000.00));
-productos.push (new Producto("MotorolaE40", 40000.00));
-productos.push (new Producto("MotorolaE32", 45000.00));
-productos.push (new Producto("MotorolaG22", 50000.00));
-productos.push (new Producto("MotorolaG32", 55000.00));
-productos.push (new Producto("MotorolaG42", 60000.00));
-productos.push (new Producto("MotorolaG52", 65000.00));
-productos.push (new Producto("MotorolaG82", 70000.00));
-productos.push (new Producto("MotorolaEdge30Ultra", 75000.00));
-productos.push (new Producto("MotorolaEdge30Neo", 80000.00));
-productos.push (new Producto("MotorolaEdge30Pro", 85000.00));
-productos.push (new Producto("MotorolaEdge30Fusion", 900000.00));
-productos.push (new Producto("MotorolaEdge30FusionSe", 95000.00));
 
+calcularTotal();
 
-const carrito = [10, 10, 10, 10];
-let totalFinal = 0
-
-// function calcularTotal() {
-//     for (let index = 0; index < 6 ; index++ ){
-//         totalFinal = totalFinal+ (carrito[i]);
+// function sumarTotal {
+//     for (let index = 0 ; index < length.carrito; index++){
+//         // parcial = carrito[index];
+//         alert(carrito[index]);
+//         suma += (carrito[index]);
+//         // totalFinal += parcial;
 //     }
-//     alert (`${totalFinal}`)
+//     alert(`el total es ${suma}`)
+//     return suma
 // }
-for (let index = 0; index < 5 ; index++ ){
-    parcial = carrito[index];
-    totalFinal += parcial;
-}
-alert (`el total es ${totalFinal}`)
+// sumarTotal()
+
+// alert (`el total es ${suma}`)
 // calcularTotal()
 
 // const productos = [];
@@ -120,9 +126,10 @@ for (const producto of productos) {
 }
 
 const cliente1 = new Cliente(39329297,"Nico", "Godoy", "nicolasgastongodoy@gmail.com");
-cliente1.comprar();
-
-
+// cliente1.comprar();
+cliente1.enviarCorreo()
+cliente1.comprar(MotoE20)
+cliente1.finalizarCompra()
 alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
 
 let totalCompra = 0;
@@ -189,6 +196,13 @@ function Comprar() {
     }
 }
 
+// FUNCION CALCULAR TOTAL CARRITO 
+function calcularTotal() {
+    const suma = carrito.reduce((partialSum, a) => partialSum + a, 0);
+    alert(suma);
+    return suma
+}
+
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 function efectivo(monto) {
     monto = monto - (monto*0.2)
@@ -249,6 +263,49 @@ function mayorQue(n) {
 let mayorQueDiez = mayorQue(10)
 
 
+// // FUNCION PARA LA EJECUCIÓN DEL MENU
+// function ejecutarMenu () {
+//     let option = parseInt(prompt(" Indiqué la opción que desee realizar \n 1) Agregar un producto al carrito \n 2) Salir del sitio"));
+//     while (option != 0) {
+//         if (option == 1){
+//             num = parseInt(prompt("¿Cuántos celulares vas a comprar?"));
+//             let suma = 0;
+//             for(let i = 0; i < num; i++){
+//                 numeroCompra = i + 1;
+//                 alert(`Producto n° ${numeroCompra}`);
+//                 suma += Comprar();
+//             }
+//             alert(`Has finalizado la selección. El total es ${suma} pesos`)
+//             descuento = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
+//             while (descuento == 1 || 2 ) {
+//                 if (descuento == 1) {
+//                     sumaEfectivo = efectivo(suma);
+//                     alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
+//                     return sumaEfectivo
+//                 } else if (descuento == 2){
+//                     sumaCredito = credito(suma);
+//                     alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
+//                     return sumaEfectivo
+//                 } else {
+//                     alert(`No ingresó un medio correcto, vuelva a intentar`)
+//                     break
+//                 }
+//             }
+//             return listaCompras 
+//         }else if (option == 2){
+//             alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar un pedido")
+//             break
+
+//         }else{
+//             alert("Comience de nuevo y elija la opción 1 o 2")
+//             break
+//         }
+//     }
+// }
+// // LLAMADO A LA FUNCION DEL MENU 
+// ejecutarMenu()
+
+
 // productos.forEach(item => {
 //     let div = document.createElement("div");
 //     div.innerHTML = `
@@ -260,3 +317,4 @@ let mayorQueDiez = mayorQue(10)
   
 //     container.append(div);
 //   });
+
