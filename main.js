@@ -1,4 +1,4 @@
-//CARRITO VACIO ARREY
+//CARRITO VACíO ARRAY
 carrito = [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
@@ -25,16 +25,16 @@ class Producto {
     // }
     agregarCarrito(producto) {
         // carrito.push(precio)
-        alert("Este producto fue agreado al carrito: " + this.nombre)
+        alert(${producto} + " fue agreado al carrito")
     }
 }
 
 // FUNCION QUE SUMA TODOS LOS VALORES DEL CARRITO []
-function calcularTotal() {
-    const suma = carrito.reduce((partialSum, a) => partialSum + a, 0);
-    alert(suma);
-    return suma
-}
+// function calcularTotal() {
+//     const suma = carrito.reduce((partialSum, a) => partialSum + a, 0);
+//     alert(suma);
+//     return suma
+// }
 
 // ARRAY DE PRODUCTOS 
 const productos = [];
@@ -58,27 +58,10 @@ productos.push(producto7);
 productos.push(producto8);
 
 
-// productos.push(new Producto("MotoE20", 35000.00));
-// productos.push(new Producto("MotoE40", 40000.00));
-// productos.push(new Producto("MotoE32", 45000.00));
-// productos.push(new Producto("MotoG22", 50000.00));
-// productos.push(new Producto("MotoG32", 55000.00));
-// productos.push(new Producto("MotoG42", 60000.00));
-// productos.push(new Producto("MotoG52", 65000.00));
-// productos.push(new Producto("MotoG82", 70000.00));
-
-//PRUEBA
-let agregarCarrito = productos.filter((el)=> el.nombre.includes("MotoE20"));
-alert(JSON.stringify(agregarCarrito))
-precioComprar = agregarCarrito.map((el)=> el.precio);
-alert(JSON.stringify(precioComprar))
-carrito.push(precioComprar);
-alert(carrito)
-
-    
+   
 class Cliente {
 
-    constructor(dni, nombre, apellido, correo) {
+    constructor(dni, nombre, apellido, direccion, correo) {
         this.dni =  dni
         this.nombre = nombre;
         this.apellido = apellido;
@@ -86,63 +69,61 @@ class Cliente {
         this.correo = correo;
     }
     comprar() {
-        let productoComprar = prompt("Ingrese el producto que desea comprar: ");
+        let productoComprar = prompt("Ingrese el NOMBRE del producto que desea comprar:\n 1) MotoE20  \n 2) MotoE32 \n 4) MotoE40 \n 5) MotoG22  \n 6) MotoG32 \n 7) MotoG42 \n 8) MotoE52 \n 9) MotoG82");
         // carrito.push(producto.precio)
         // alert(productoComprar)
         agregarCarrito = productos.filter((el)=> el.nombre.includes(productoComprar));
-        alert(JSON.stringify(agregarCarrito))
-        precioComprar = agregarCarrito.map((el)=> el.precio);
-        alert(JSON.stringify(precioComprar))
-        carrito.push(precioComprar);
-        alert(`El precio del producto es: ${carrito}`);
+        // alert(JSON.stringify(agregarCarrito))
+        precioComprar = parseInt(agregarCarrito.map((el)=> el.precio));
+        // alert(JSON.stringify(precioComprar))
+        carrito.push((precioComprar));
+        // alert(`El precio del producto es: ${carrito}`);
     }
     aplicarInteres() {
         let medioDePago = prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)")
         while (medioDePago == 1 || 2 ) {
             if (medioDePago == 1) {
-                sumaEfectivo = efectivo(calcularTotal());
-                alert(`- El subtotal es ${sumaEfectivo} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
+                sumaEfectivo = efectivo(parseInt(calcularTotal()));
+                alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
                 return sumaEfectivo
             } else if (medioDePago == 2){
-                sumaCredito = credito(calcularTotal());
-                alert(`- El subtotal es: ${sumaCredito} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
+                sumaCredito = credito(parseInt(calcularTotal()));
+                alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
                 return sumaEfectivo
             } else {
                 alert(`No ingresó un medio correcto, vuelva a intentar`)
                 break
             }
-        alert("El precio del producto es: " + this.precio)
+        // alert("El precio del producto es: " + this.precio)
     }
     }
-    // FUNCIONA MENOS EL ALERT 
-
+    // FUNCIONA
     finalizarCompra() {
-        calcularTotal();
-        valor = calcularTotal();
-        prompt("Ingrese: ")
-        alert(`El total de su compra es ${valor}`);
+        const final = carrito.reduce((partialSum, a) => partialSum + a, 0);
+        alert(`El precio del producto es: ${final}`);
     }
-    // ESTE FUNCIONA
+    // FUNCIONA
     enviarCorreo(){
         alert("Se le ha enviado la factura al correo "+ this.correo)
     }
 }
 
+//PRUEBA
 
-const cliente1 = new Cliente(39329297,"Nico", "Godoy", "Colón 1098", "nicolasgastongodoy@gmail.com");
-cliente1.enviarCorreo();
-cliente1.comprar();
-cliente1.finalizarCompra()
-cliente1.aplicarInteres();
-
-alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
-
-
-// // LLAMADO A LA FUNCION DEL MENU 
-ejecutarMenu()
+let agregarCarrito = productos.filter((el)=> el.nombre.includes("MotoE20"));
+alert(JSON.stringify(agregarCarrito))
+precioComprar = parseInt(agregarCarrito.map((el)=> el.precio));
+alert(JSON.stringify(precioComprar))
+carrito.push(precioComprar);
+alert(carrito)
 
 
 
+// const cliente1 = new Cliente(39329297,"Nico", "Godoy", "Colón 1098", "nicolasgastongodoy@gmail.com");
+// cliente1.comprar();
+// cliente1.finalizarCompra();
+// cliente1.enviarCorreo();
+// cliente1.aplicarInteres();
 
 // -------------------------------------------------------------- 
 
@@ -152,44 +133,42 @@ ejecutarMenu()
 
 
 // FUNCION PARA LA EJECUCIÓN DEL MENU
+alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
+
 function ejecutarMenu () {
-    let option = parseInt(prompt(" Indiqué la opción que desee realizar \n 1) Agregar un producto al carrito \n 2) Salir del sitio"));
+    let option = parseInt(prompt("¿Desea crear su usuario? \n 1) Sí \n 2) No"));
     while (option != 0) {
         if (option == 1){
-            num = parseInt(prompt("¿Cuántos celulares vas a comprar?"));
-            let suma = 0;
-            for(let i = 0; i < num; i++){
-                numeroCompra = i + 1;
-                alert(`Producto n° ${numeroCompra}`);
-                suma += Comprar();
+            alert("-A continuación, ingrese sus datos para poder crear su usuario: ");
+            let dni = prompt("Ingrese su n° de DNI: ");
+            let nombre  = prompt("Ingrese su nombre: ");
+            let apellido = prompt("Ingrese su apellido: ");
+            let direccion = prompt("Ingrese su calle y altura: ");
+            let correo = prompt("Ingrese su correo electrónico: ");
+            // usuario = nombre;
+            const usuarioUno = new Cliente(dni, nombre, apellido, direccion, correo);
+            let accionCliente = prompt("¿Qué desea realizar?:\n 1) Comprar \n 2) Abandonar compra\n Ingrese la opción: ");
+            if (accionCliente = 1) {
+                usuarioUno.comprar();
+                alert("Ahora, procederemos a pagar el producto")
+                usuarioUno.aplicarInteres()
+                usuarioUno.finalizarCompra();
+                usuarioUno.enviarCorreo();
+            } 
+            else if (accionCliente = 2) {
+                alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar un pedido")
+                break
+            } else {
+                alert("Debe seleccionar una opción correcta, vuelva a empezar.")
+                break
             }
-            alert(`Has finalizado la selección. El total es ${suma} pesos`)
-            descuento = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
-            while (descuento == 1 || 2 ) {
-                if (descuento == 1) {
-                    sumaEfectivo = efectivo(suma);
-                    alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
-                    return sumaEfectivo
-                } else if (descuento == 2){
-                    sumaCredito = credito(suma);
-                    alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
-                    return sumaEfectivo
-                } else {
-                    alert(`No ingresó un medio correcto, vuelva a intentar`)
-                    break
-                }
-            }
-            return listaCompras 
-        }else if (option == 2){
-            alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar un pedido")
-            break
-
-        }else{
-            alert("Comience de nuevo y elija la opción 1 o 2")
+        }else {
+            alert("Debe seleccionar una opción correcta, vuelva a empezar.")
             break
         }
     }
 }
+
 // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
 
