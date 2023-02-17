@@ -1,5 +1,6 @@
 //CARRITO VACíO ARRAY
 carrito = [];
+baseDatosClientes = [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 function efectivo(monto) {
@@ -25,7 +26,7 @@ class Producto {
     // }
     agregarCarrito(producto) {
         // carrito.push(precio)
-        alert(${producto} + " fue agreado al carrito")
+        alert(`${producto} fue agreado al carrito`);
     }
 }
 
@@ -83,12 +84,12 @@ class Cliente {
         let medioDePago = prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)")
         while (medioDePago == 1 || 2 ) {
             if (medioDePago == 1) {
-                sumaEfectivo = efectivo(parseInt(calcularTotal()));
-                alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
+                sumaEfectivo = efectivo(calcularTotal());
+                alert(`El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
                 return sumaEfectivo
             } else if (medioDePago == 2){
-                sumaCredito = credito(parseInt(calcularTotal()));
-                alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
+                sumaCredito = credito(calcularTotal());
+                alert(`El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
                 return sumaEfectivo
             } else {
                 alert(`No ingresó un medio correcto, vuelva a intentar`)
@@ -147,13 +148,15 @@ function ejecutarMenu () {
             let correo = prompt("Ingrese su correo electrónico: ");
             // usuario = nombre;
             const usuarioUno = new Cliente(dni, nombre, apellido, direccion, correo);
+            alert(`¡Perfecto, hemos creado su cliente!`)
+            baseDatosClientes.push((usuarioUno));
             let accionCliente = prompt("¿Qué desea realizar?:\n 1) Comprar \n 2) Abandonar compra\n Ingrese la opción: ");
             if (accionCliente = 1) {
                 usuarioUno.comprar();
                 alert("Ahora, procederemos a pagar el producto")
-                usuarioUno.aplicarInteres()
                 usuarioUno.finalizarCompra();
                 usuarioUno.enviarCorreo();
+                // usuarioUno.aplicarInteres()
             } 
             else if (accionCliente = 2) {
                 alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar un pedido")
@@ -171,6 +174,16 @@ function ejecutarMenu () {
 
 // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
+
+// let imprimirCliente = parseInt(prompt("Desea mostrar en pantalla el cliente creado?:\n 1) Sí \n2) No"))
+// if (imprimirCliente == 1) {
+//     alert(JSON.stringify(baseDatosClientes))
+//     return None
+// } else {
+//     alert("Muy buenas tardes")
+//     return None
+// }
+
 
 
 // // FUNCION PARA SELECCIONAR LOS PRODUCTOS
