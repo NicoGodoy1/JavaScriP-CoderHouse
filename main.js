@@ -1,6 +1,16 @@
 //CARRITO VACIO ARREY
 carrito = [];
 
+// FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
+function efectivo(monto) {
+    monto = monto - (monto*0.2)
+    return monto
+}
+function credito(monto) {
+    monto = monto + (monto*0.1)
+    return monto
+}
+
 
 // DECLARACIÓN OBJETOS: PRODUCTO Y CLIENTE
 class Producto {
@@ -10,12 +20,9 @@ class Producto {
         this.precio = parseFloat(precio);
         // this.vendido = false;
     }
-    vender() {
-        alert("Hola, soy el producto" + this.nombre)
-    }
-    mostrarPrecio(producto) {
-        alert("El precio del producto es: " + this.precio)
-    }
+    // vender() {
+    //     alert("Hola, soy el producto" + this.nombre)
+    // }
     agregarCarrito(producto) {
         // carrito.push(precio)
         alert("Este producto fue agreado al carrito: " + this.nombre)
@@ -89,8 +96,23 @@ class Cliente {
         carrito.push(precioComprar);
         alert(`El precio del producto es: ${carrito}`);
     }
-    sumarInteres() {
-        alert("Hola, soy " + this.nombre)
+    aplicarInteres() {
+        let medioDePago = prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)")
+        while (medioDePago == 1 || 2 ) {
+            if (medioDePago == 1) {
+                sumaEfectivo = efectivo(calcularTotal());
+                alert(`- El subtotal es ${sumaEfectivo} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
+                return sumaEfectivo
+            } else if (medioDePago == 2){
+                sumaCredito = credito(calcularTotal());
+                alert(`- El subtotal es: ${sumaCredito} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
+                return sumaEfectivo
+            } else {
+                alert(`No ingresó un medio correcto, vuelva a intentar`)
+                break
+            }
+        alert("El precio del producto es: " + this.precio)
+    }
     }
     // FUNCIONA MENOS EL ALERT 
 
@@ -111,23 +133,13 @@ const cliente1 = new Cliente(39329297,"Nico", "Godoy", "Colón 1098", "nicolasga
 cliente1.enviarCorreo();
 cliente1.comprar();
 cliente1.finalizarCompra()
+cliente1.aplicarInteres();
+
 alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
 
 
 // // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
-
-// FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
-function efectivo(monto) {
-    monto = monto - (monto*0.2)
-    return monto
-}
-function credito(monto) {
-    monto = monto + (monto*0.1)
-    return monto
-}
-
-
 
 
 
