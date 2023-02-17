@@ -1,20 +1,7 @@
-let MotorolaE20 = 30000.00;
-let MotorolaE40 = 35000.00; 
-let MotorolaE22 = 40000.00;
-let MotorolaE32 = 45000.00;
-let MotorolaG22 = 50000.00;
-let MotorolaG32 = 50000.00;
-let MotorolaG42 = 55000.00;
-let MotorolaG52 = 60000.00;
-let MotorolaG82 = 65000.00;
-let MotorolaEdge30fusion = 70000.00; 
-let MotorolaEdge30Ultra = 75000.00;
-let MotorolaEdge30Neo = 80000.00;
-let MotorolaEdge30Pro = 85000.00;
-let MotorolaEdge30fusionSE = 90000.00; 
+//carrito vacio
+// carrito = [];
 
-
-// Declaracón objeto cliente
+// Declaracón objeto producto y cliente
 class Producto {
 
     constructor(nombre, precio) {
@@ -22,15 +9,20 @@ class Producto {
         this.precio = parseFloat(precio);
         // this.vendido = false;
     }
-    sumarIva() {
-        alert("Hola, soy " + this.nombre)
-    }
     vender() {
+        alert("Hola, soy el producto" + this.nombre)
+    }
+    agregarCarrito(precio) {
+        // carrito.push(precio)
         alert("Hola, soy " + this.nombre)
     }
-    agregarCarrito() {
-        alert("Hola, soy " + this.nombre)
-    }
+//     sumarTotal() {
+//         for (const index of carrito ) {
+//             total += 
+//             producto.vender()
+//         }
+//         alert("Hola, soy " + this.nombre)
+//     }
 }
 
 class Cliente {
@@ -42,7 +34,8 @@ class Cliente {
         this.correo = correo;
         this.comprar = function() {alert("Hola, soy " + this.nombre)}
     }
-    comprar() {
+    comprar(producto) {
+        // carrito.push(producto)
         alert("Hola, soy " + this.nombre)
     }
     sumarInteres() {
@@ -53,28 +46,82 @@ class Cliente {
     }
 }
 
+const productos = [];
+productos.push (new Producto("MotorolaE20", 35000.00));
+productos.push (new Producto("MotorolaE40", 40000.00));
+productos.push (new Producto("MotorolaE32", 45000.00));
+productos.push (new Producto("MotorolaG22", 50000.00));
+productos.push (new Producto("MotorolaG32", 55000.00));
+productos.push (new Producto("MotorolaG42", 60000.00));
+productos.push (new Producto("MotorolaG52", 65000.00));
+productos.push (new Producto("MotorolaG82", 70000.00));
+productos.push (new Producto("MotorolaEdge30Ultra", 75000.00));
+productos.push (new Producto("MotorolaEdge30Neo", 80000.00));
+productos.push (new Producto("MotorolaEdge30Pro", 85000.00));
+productos.push (new Producto("MotorolaEdge30Fusion", 900000.00));
+productos.push (new Producto("MotorolaEdge30FusionSe", 95000.00));
+
+
+const carrito = [10, 10, 10, 10];
+let totalFinal = 0
+
+// function calcularTotal() {
+//     for (let index = 0; index < 6 ; index++ ){
+//         totalFinal = totalFinal+ (carrito[i]);
+//     }
+//     alert (`${totalFinal}`)
+// }
+for (let index = 0; index < 5 ; index++ ){
+    parcial = carrito[index];
+    totalFinal += parcial;
+}
+alert (`el total es ${totalFinal}`)
+// calcularTotal()
+
+// const productos = [];
+// const MotorolaE20 = new Producto({nombre: "MotorolaE20", precio: 35000.00});
+// const MotorolaE40 = new Producto({nombre: "MotorolaE40", precio: 40000.00});
+// const MotorolaE32 = new Producto({nombre: "MotorolaE32", precio: 45000.00});
+// const MotorolaG22 = new Producto({nombre: "MotorolaG22", precio: 50000.00});
+// const MotorolaG32 = new Producto({nombre: "MotorolaG32", precio: 55000.00});
+// const MotorolaG42 = new Producto({nombre: "MotorolaG42", precio: 60000.00});
+// const MotorolaG52 = new Producto({nombre: "MotorolaG52", precio: 65000.00});
+// const MotorolaG82 = new Producto({nombre: "MotorolaG82", precio: 70000.00});
+// const MotorolaEdge30Ultra = new Producto({nombre: "MotorolaEdge30Ultra", precio: 75000.00});
+// const Motoroladge30Neo = new Producto({nombre: "MotorolaEdge30Neo", precio: 80000.00});
+// const MotorolaEdge30Pro = new Producto({nombre: "MotorolaEdge30Pro", precio: 85000.00});
+// const MotorolaEdge30Fusion = new Producto({nombre: "MotorolaEdge30Fusion", precio: 900000.00});
+// const MotorolaEdge30FusionSe = new Producto({nombre: "MotorolaEdge30FusionSe", precio: 95000.00});
+
+
+// variables de productos 
+// const productos = [];
+// productos.push (MotorolaE20);
+// productos.push (MotorolaE40);
+// productos.push (MotorolaE32);
+// productos.push (MotorolaG22);
+// productos.push (MotorolaG32);
+// productos.push (MotorolaG42);
+// productos.push (MotorolaG52);
+// productos.push (MotorolaG82);
+// productos.push (MotorolaEdge30Ultra);
+// productos.push (Motoroladge30Neo);
+// productos.push (MotorolaEdge30Pro);
+// productos.push (MotorolaEdge30Fusion);
+// productos.push (MotorolaEdge30FusionSe);
+
+// for (let index = 0; index < 6 ; index++ ) {
+// //    item.vender();
+//     alert(productos[index]);
+// }
+
+for (const producto of productos) {
+    producto.vender()
+}
+
 const cliente1 = new Cliente(39329297,"Nico", "Godoy", "nicolasgastongodoy@gmail.com");
 cliente1.comprar();
 
-// variables de productos 
-const productos = [];
-productos.push (new Producto("MotorolaE20", " 35000.00"));
-productos.push (new Producto("MotorolaE40", " 40000.00"));
-productos.push (new Producto("MotorolaE32", " 45000.00"));
-productos.push (new Producto("MotorolaG22", " 50000.00"));
-productos.push (new Producto("MotorolaG32", " 55000.00"));
-productos.push (new Producto("MotorolaG42", " 60000.00"));
-productos.push (new Producto("MotorolaG52", " 65000.00"));
-productos.push (new Producto("MotorolaG82", " 70000.00"));
-productos.push (new Producto("MotorolaEdge30Ultra", " 75000.00"));
-productos.push (new Producto("MotorolaEdge30Neo", " 80000.00"));
-productos.push (new Producto("MotorolaEdge30Pro", " 85000.00"));
-productos.push (new Producto("MotorolaEdge30Fusion", " 900000.00"));
-productos.push (new Producto("MotorolaEdge30FusionSe", "95000.00"));
-
-for (producto in productos) {
-    alert(producto.)
-}
 
 alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
 
@@ -165,7 +212,7 @@ function ejecutarMenu () {
                 suma += Comprar();
             }
             alert(`Has finalizado la selección. El total es ${suma} pesos`)
-            descuernto = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
+            descuento = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
             while (descuento == 1 || 2 ) {
                 if (descuento == 1) {
                     sumaEfectivo = efectivo(suma);
