@@ -21,7 +21,7 @@ class Producto {
         this.precio = parseFloat(precio);
     }
     agregarCarrito(producto) {
-        // carrito.push(precio)
+        carrito.push(producto)
         alert(`${producto} fue agreado al carrito`);
     }
 }
@@ -72,13 +72,11 @@ class Cliente {
         carrito.push((precioComprar));
         return carrito
     }
-    // FUNCIONA
     finalizarCompra() {
         const final = carrito.reduce((partialSum, a) => partialSum + a, 0);
         alert(`El precio total es: ${final}`);
         return final
     }
-    // FUNCIONA
     enviarCorreo(){
         alert("Se le ha enviado la factura al correo "+ this.correo)
     }
@@ -144,7 +142,6 @@ function ejecutarMenu () {
 // LLAMADO A LA FUNCION DEL MENU 
 ejecutarMenu()
 
-// 
 function imprimirBaseDatos() {
     let op = parseInt(prompt("Desea mostrar en pantalla el cliente creado?:\n 1) Sí \n 2) No"))
     if (op == 1) {
@@ -155,3 +152,17 @@ function imprimirBaseDatos() {
 }
 
 imprimirBaseDatos()
+
+//  DOM
+
+productos.forEach(item => {
+    let div = document.createElement("div");
+    div.innerHTML = `
+      <h2>Id: ${item.id}</h2>
+      <p>Nombre: ${item.nombre}</p>
+      <b>$${item.precio}</b>
+      <button class="button">"Comprar"</button>
+    `;
+  
+    container.append(div);
+  });
