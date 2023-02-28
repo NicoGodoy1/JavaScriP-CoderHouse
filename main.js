@@ -1,5 +1,6 @@
 //CARRITO VACíO ARRAY
 carrito = [];
+carritoPrueba = [];
 baseDatosClientes = [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
@@ -16,9 +17,11 @@ function credito(monto) {
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {
 
-    constructor(nombre, precio) {
+    constructor(id, nombre, precio, url) {
+        this.id = id;
         this.nombre =  nombre;
         this.precio = parseFloat(precio);
+        this.url = url
     }
     agregarCarrito(producto) {
         carrito.push(producto)
@@ -26,17 +29,23 @@ class Producto {
     }
 }
 
-// ARRAY DE PRODUCTOS 
+// // ARRAY DE PRODUCTOS 
 const productos = [];
 
-producto1 = new Producto("motoe20", 35000.00);
-producto2 = new Producto("motoe40", 40000.00);
-producto3 = new Producto("motoe32", 45000.00);
-producto4 = new Producto("motog22", 50000.00);
-producto5 = new Producto("motog32", 55000.00);
-producto6 = new Producto("motog42", 60000.00);
-producto7 = new Producto("motog52", 65000.00);
-producto8 = new Producto("motog82", 70000.00);
+const producto1 = new Producto(1,"motoe20", 35000.00, "./recursos/productos/motorE20.png");
+const producto2 = new Producto(2,"motoe40", 40000.00, "./recursos/productos/motoE40.png");
+const producto3 = new Producto(3,"motoe32", 45000.00, "./recursos/productos/motoE32.png");
+const producto4 = new Producto(4,"motog22", 50000.00, "./recursos/productos/motoG22.png");
+const producto5 = new Producto(5,"motog32", 55000.00, "./recursos/productos/motoG32.png");
+const producto6 = new Producto(6,"motog42", 60000.00, "./recursos/productos/motoG42.png");
+const producto7 = new Producto(7,"motog52", 65000.00, "./recursos/productos/motoG52.png");
+const producto8 = new Producto(8,"motog82", 70000.00, "./recursos/productos/motoG82.png");
+const producto9 = new Producto(9,"motoedge30ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png");
+const producto10 = new Producto(10,"motoedge30fusionse", 80000.00, "./recursos/productos/motoEdge30fusionSe.png");
+const producto11 = new Producto(11,"motoedge30fusion", 85000.00, "./recursos/productos/motoEdge30Fusion.png");
+const producto12 = new Producto(12,"motoedge30neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png");
+const producto13 = new Producto(13,"motoedge30", 95000.00, "./recursos/productos/motoEdge30.png");
+
 
 productos.push(producto1);
 productos.push(producto2);
@@ -46,6 +55,67 @@ productos.push(producto5);
 productos.push(producto6);
 productos.push(producto7);
 productos.push(producto8);
+productos.push(producto8);
+productos.push(producto9);
+productos.push(producto10);
+productos.push(producto11);
+productos.push(producto12);
+productos.push(producto13);
+
+//  DOM
+
+let contenedor = document.getElementById("cards");
+
+// const products = [
+//   {id: 1, nombre: "motoe20", precio: 35000.00},
+//   {id: 2, nombre: "motoe40", precio: 40000.00},
+//   {id: 3, nombre: "motoe32", precio: 45000.00},
+//   {id: 4, nombre: "motog22", precio: 50000.00},
+//   {id: 5, nombre: "motog32", precio: 55000.00},
+//   {id: 6, nombre: "motog42", precio: 60000.00},
+//   {id: 7, nombre: "motog52", precio: 65000.00},
+//   {id: 8, nombre: "motog82", precio: 70000.00},
+// ];
+
+productos.forEach(item => {
+  let div = document.createElement("div");
+  div.innerHTML = `
+    <div class="col-lg-3 col-md-6 col-sm-4">
+          <div class="card tarjetas__efecto" >
+            <img src="${item.url}" class="card-img-top img-fluid" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">${item.nombre}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
+              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+              <a href="https://www.motorola.com.ar/moto-g52/p"></a><button id="agregarCarrito" class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button></a>
+              <h6 class="text-center">producto N°: ${item.id}</h6>
+            </ul>
+          </div>
+        </div>
+  `;
+
+  contenedor.append(div);
+});
+
+// EVENTOS 
+
+// boton.addEventListener("mouseover", () => {
+//   saludo.className = "azul";
+// });
+// boton.addEventListener("click", () => console.log("click"));
+
+let botonComprar = document.getElementById("agregarCarrito");
+
+botonComprar.addEventListener("click", function() {
+    // obtener el valor del producto del atributo data-valor del botón
+    let valorProducto = parseInt(botonComprar.getAttribute("dataValor"));
+    // definir un arreglo y agregar el valor del producto
+    // let carritoPrueba = [];
+    carrito.push(valorProducto);
+    alert(`Sumo al carrito un producto que vale ${valorProducto}`); // muestra [10] en la consola
+  });
 
 //PRUEBA
 let producto = prompt("Ingrese el NOMBRE del producto que desea comprar:\n 1) MotoE20  \n 2) MotoE32 \n 4) MotoE40 \n 5) MotoG22  \n 6) MotoG32 \n 7) MotoG42 \n 8) MotoG52 \n 9) MotoG82");
@@ -81,8 +151,6 @@ class Cliente {
         alert("Se le ha enviado la factura al correo "+ this.correo)
     }
 }
-
-
 
 // FUNCION PARA LA EJECUCIÓN DEL MENU
 alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
@@ -152,17 +220,3 @@ function imprimirBaseDatos() {
 }
 
 imprimirBaseDatos()
-
-//  DOM
-
-productos.forEach(item => {
-    let div = document.createElement("div");
-    div.innerHTML = `
-      <h2>Id: ${item.id}</h2>
-      <p>Nombre: ${item.nombre}</p>
-      <b>$${item.precio}</b>
-      <button class="button">"Comprar"</button>
-    `;
-  
-    container.append(div);
-  });
