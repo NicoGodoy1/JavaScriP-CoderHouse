@@ -79,7 +79,7 @@ let contenedor = document.getElementById("cards");
 
 productos.forEach(item => {
   let div = document.createElement("div");
-  div.innerHTML = `
+  div.innerHTML += `
     <div class="col-lg-3 col-md-6 col-sm-4">
           <div class="card tarjetas__efecto" >
             <img src="${item.url}" class="card-img-top img-fluid" alt="...">
