@@ -109,12 +109,9 @@ productos.forEach(item => {
 let botonComprar = document.getElementById("agregarCarrito");
 
 botonComprar.addEventListener("click", function() {
-    // obtener el valor del producto del atributo data-valor del botón
     let valorProducto = parseInt(botonComprar.getAttribute("dataValor"));
-    // definir un arreglo y agregar el valor del producto
-    // let carritoPrueba = [];
     carrito.push(valorProducto);
-    alert(`Sumo al carrito un producto que vale ${valorProducto}`); // muestra [10] en la consola
+    alert(`Sumo al carrito un producto que vale ${valorProducto}`); 
   });
 
 //PRUEBA
