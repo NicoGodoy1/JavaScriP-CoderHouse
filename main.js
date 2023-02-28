@@ -78,8 +78,7 @@ let contenedor = document.getElementById("cards");
 // ];
 
 productos.forEach(item => {
-  let div = document.createElement("div");
-  div.innerHTML += `
+  contenedor.innerHTML += `
     <div class="col-lg-3 col-md-6 col-sm-4">
           <div class="card tarjetas__efecto" >
             <img src="${item.url}" class="card-img-top img-fluid" alt="...">
@@ -95,8 +94,6 @@ productos.forEach(item => {
           </div>
         </div>
   `;
-
-  contenedor.append(div);
 });
 
 // EVENTOS 
