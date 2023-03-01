@@ -12,7 +12,7 @@ function credito(monto) {
     monto = monto + (monto*0.1)
     return monto
 }
-
+let contenedor = document.getElementById("cards");
 
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {
@@ -23,9 +23,28 @@ class Producto {
         this.precio = parseFloat(precio);
         this.url = url
     }
-    agregarCarrito(producto) {
-        carrito.push(producto)
-        alert(`${producto} fue agreado al carrito`);
+    desplegarProducto() {
+        contenedor.innerHTML += `
+            <div class="col-lg-3 col-md-6 col-sm-4">
+                <div class="card tarjetas__efecto" >
+                    <img src="${this.url}" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title text-center">${this.nombre}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center fs-3 fw-bold">${this.precio}</li>
+                    <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+                    <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Comprar</button>
+                    <h6 class="text-center">producto N°: ${this.id}</h6>
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+    agregarEvento() {
+        let botonComprar = document.getElementById(`${this.id}`)
+        let productoFiltrado = productos.filter( item => item.id == this.id)
+        botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
     }
 }
 
@@ -46,7 +65,6 @@ const producto11 = new Producto(11,"motoedge30fusion", 85000.00, "./recursos/pro
 const producto12 = new Producto(12,"motoedge30neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png");
 const producto13 = new Producto(13,"motoedge30", 95000.00, "./recursos/productos/motoEdge30.png");
 
-
 productos.push(producto1);
 productos.push(producto2);
 productos.push(producto3);
@@ -62,54 +80,47 @@ productos.push(producto11);
 productos.push(producto12);
 productos.push(producto13);
 
-//  DOM
+// DOM 
+productos.forEach(item => item.desplegarProducto());
+// EVENTO COMPRA
+productos.forEach(item => item.agregarEvento());
 
-let contenedor = document.getElementById("cards");
+function agregarAlCarrito(producto) {
+    console.log(producto)
+    carritoPrueba.push(producto);
+    alert(`Sumo al carrito un producto que vale $${producto.precio}`); 
+  }
 
-// const products = [
-//   {id: 1, nombre: "motoe20", precio: 35000.00},
-//   {id: 2, nombre: "motoe40", precio: 40000.00},
-//   {id: 3, nombre: "motoe32", precio: 45000.00},
-//   {id: 4, nombre: "motog22", precio: 50000.00},
-//   {id: 5, nombre: "motog32", precio: 55000.00},
-//   {id: 6, nombre: "motog42", precio: 60000.00},
-//   {id: 7, nombre: "motog52", precio: 65000.00},
-//   {id: 8, nombre: "motog82", precio: 70000.00},
-// ];
+// let contenedor = document.getElementById("cards");
 
-productos.forEach(item => {
-  contenedor.innerHTML += `
-    <div class="col-lg-3 col-md-6 col-sm-4">
-          <div class="card tarjetas__efecto" >
-            <img src="${item.url}" class="card-img-top img-fluid" alt="...">
-            <div class="card-body">
-              <h5 class="card-title text-center">${item.nombre}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
-              <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
-              <a href="https://www.motorola.com.ar/moto-g52/p"></a><button id="agregarCarrito" class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button></a>
-              <h6 class="text-center">producto N°: ${item.id}</h6>
-            </ul>
-          </div>
-        </div>
-  `;
-});
+// productos.forEach(item => {
+//   contenedor.innerHTML += `
+//     <div class="col-lg-3 col-md-6 col-sm-4">
+//           <div class="card tarjetas__efecto" >
+//             <img src="${item.url}" class="card-img-top img-fluid" alt="...">
+//             <div class="card-body">
+//               <h5 class="card-title text-center">${item.nombre}</h5>
+//             </div>
+//             <ul class="list-group list-group-flush">
+//               <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
+//               <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+//               <a href="https://www.motorola.com.ar/moto-g52/p"></a><button id="agregarCarrito" class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button></a>
+//               <h6 class="text-center">producto N°: ${item.id}</h6>
+//             </ul>
+//           </div>
+//         </div>
+//   `;
+// });
 
 // EVENTOS 
 
-// boton.addEventListener("mouseover", () => {
-//   saludo.className = "azul";
-// });
-// boton.addEventListener("click", () => console.log("click"));
+// let botonComprar = document.getElementById("agregarCarrito");
 
-let botonComprar = document.getElementById("agregarCarrito");
-
-botonComprar.addEventListener("click", function() {
-    let valorProducto = parseInt(botonComprar.getAttribute("dataValor"));
-    carrito.push(valorProducto);
-    alert(`Sumo al carrito un producto que vale ${valorProducto}`); 
-  });
+// botonComprar.addEventListener("click", function() {
+//     let valorProducto = parseInt(botonComprar.getAttribute("dataValor"));
+//     carrito.push(valorProducto);
+//     alert(`Sumo al carrito un producto que vale ${valorProducto}`); 
+//   });
 
 //PRUEBA
 let producto = prompt("Ingrese el NOMBRE del producto que desea comprar:\n 1) MotoE20  \n 2) MotoE32 \n 4) MotoE40 \n 5) MotoG22  \n 6) MotoG32 \n 7) MotoG42 \n 8) MotoG52 \n 9) MotoG82");
