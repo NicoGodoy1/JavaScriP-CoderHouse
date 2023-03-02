@@ -213,7 +213,7 @@ function ejecutarMenu () {
 }
 
 // LLAMADO A LA FUNCION DEL MENU 
-ejecutarMenu()
+// ejecutarMenu()
 
 function imprimirBaseDatos() {
     let op = parseInt(prompt("Desea mostrar en pantalla el cliente creado?:\n 1) Sí \n 2) No"))
