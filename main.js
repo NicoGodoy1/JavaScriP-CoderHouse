@@ -88,7 +88,13 @@ productos.forEach(item => item.agregarEvento());
 function agregarAlCarrito(producto) {
     console.log(producto)
     carritoPrueba.push(producto);
-    alert(`Sumo al carrito un producto que vale $${producto.precio}`); 
+    Swal.fire({
+        title: "Genial!",
+        text: "Has agregado un producto nuevo al carrito!",
+        icon: "success",
+        confirmButtonText: "Continuar",
+      });
+    // alert(`Sumo al carrito un producto que vale $${producto.precio}`); 
   }
 
 // let contenedor = document.getElementById("cards");
