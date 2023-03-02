@@ -230,7 +230,7 @@ function imprimirBaseDatos() {
     }
 }
 
-imprimirBaseDatos()
+// imprimirBaseDatos()
 
 let button = document.getElementById("boton");
 
