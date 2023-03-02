@@ -123,11 +123,11 @@ function agregarAlCarrito(producto) {
 //   });
 
 //PRUEBA
-let producto = prompt("Ingrese el NOMBRE del producto que desea comprar:\n 1) MotoE20  \n 2) MotoE32 \n 4) MotoE40 \n 5) MotoG22  \n 6) MotoG32 \n 7) MotoG42 \n 8) MotoG52 \n 9) MotoG82");
-        productoComprar = producto.toLowerCase();
-        let agregarCarrito = productos.filter((el)=> el.nombre.includes(productoComprar));
-        precioComprar = parseInt(agregarCarrito.map((el)=> el.precio));
-        carrito.push((precioComprar));
+// let producto = prompt("Ingrese el NOMBRE del producto que desea comprar:\n 1) MotoE20  \n 2) MotoE32 \n 4) MotoE40 \n 5) MotoG22  \n 6) MotoG32 \n 7) MotoG42 \n 8) MotoG52 \n 9) MotoG82");
+//         productoComprar = producto.toLowerCase();
+//         let agregarCarrito = productos.filter((el)=> el.nombre.includes(productoComprar));
+//         precioComprar = parseInt(agregarCarrito.map((el)=> el.precio));
+//         carrito.push((precioComprar));
 
 // DECLARO OBJETO CLIENTE    
 class Cliente {
@@ -158,7 +158,7 @@ class Cliente {
 }
 
 // FUNCION PARA LA EJECUCIÓN DEL MENU
-alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
+// alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
 
 function ejecutarMenu () {
     let option = parseInt(prompt("¿Desea crear su usuario? \n 1) Sí \n 2) No"));
@@ -225,3 +225,14 @@ function imprimirBaseDatos() {
 }
 
 imprimirBaseDatos()
+
+let button = document.getElementById("boton");
+
+button.addEventListener("click", () => {
+  Swal.fire({
+    title: "Genial!",
+    text: "Has agregado un producto nuevo al carrito!",
+    icon: "success",
+    confirmButtonText: "Continuar",
+  });
+});
