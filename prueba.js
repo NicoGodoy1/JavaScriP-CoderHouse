@@ -33,3 +33,69 @@ products.forEach(item => {
 
   contenedor.append(div);
 });
+
+// FUNCION PARA LA EJECUCIÓN DEL MENU
+// alert("Hola, muy buenas tardes, ¡Bienvenido/a a nuestro sitio web\ndonde vas a encontrar los últimos modelos de celulares!")
+
+function ejecutarMenu () {
+  let option = parseInt(prompt("¿Desea crear su usuario? \n 1) Sí \n 2) No"));
+  while (option != 0) {
+      if (option == 1){
+          alert("-A continuación, ingrese sus datos para poder crear su usuario: ");
+          let dni = prompt("Ingrese su n° de DNI: ");
+          let nombre  = prompt("Ingrese su nombre: ");
+          let apellido = prompt("Ingrese su apellido: ");
+          let direccion = prompt("Ingrese su calle y altura: ");
+          let correo = prompt("Ingrese su correo electrónico: ");
+          const usuarioUno = new Cliente(dni, nombre, apellido, direccion, correo);
+          alert(`¡Perfecto, hemos creado su usuario!`)
+          baseDatosClientes.push((usuarioUno));
+          let accionCliente = prompt("¿Qué desea realizar?:\n 1) Comprar \n 2) Abandonar compra\n Ingrese la opción: ");
+          if (accionCliente == 1) {
+              usuarioUno.comprar();
+              alert("Ahora, procederemos a pagar el producto")
+              usuarioUno.finalizarCompra();
+              let suma = usuarioUno.finalizarCompra(); 
+              descuento = parseInt(prompt("Elija el medio de pago: \n 1) Efectivo o débito (20% descuento) \n 2) Crédito en 3 cuotas (10% interés)"))
+              while (descuento == 1 || 2 ) {
+                  if (descuento == 1) {
+                      sumaEfectivo = efectivo(suma);
+                      alert(`- El subtotal es ${suma} pesos.\n- El total final con 10% de descuento es ${sumaEfectivo} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n---La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`);
+                      usuarioUno.enviarCorreo();
+                      return sumaEfectivo
+                  } else if (descuento == 2){
+                      sumaCredito = credito(suma);
+                      alert(`- El subtotal es: ${suma} pesos.\n- El total final con el 10% de interés es ${sumaCredito} pesos.\n\n--- Rescibirás el producto en las próximas 24hs.---\n\n--- La/lo invitamos a conocer nuestros CELU YA CRÉDITOS con la mejor tasa.---\n \n ¡¡Gracias por su compra!!`)
+                      usuarioUno.enviarCorreo();
+                      return sumaEfectivo
+                  } else {
+                      alert(`No ingresó un medio correcto, vuelva a intentar`)
+                      break
+                  }
+              }
+              break
+          } 
+          else if (accionCliente = 2) {
+              alert("Gracias por visitar nuestro sitio.\n Lo esperamos cuando desee realizar un pedido")
+              break
+          } else {
+              alert("Debe seleccionar una opción correcta, vuelva a empezar.")
+              break
+          }
+      }else {
+          alert("Debe seleccionar una opción correcta, vuelva a empezar.")
+          break
+      }
+  }
+}
+
+// función que ordena los productos por precio de menor a mayor
+function ordenarPorPrecioMenorAMayor(productos) {
+  productos.sort((a, b) => a.precio - b.precio);
+  return productos;
+}
+// función  que ordena los productos por precio de mayor a menor
+function ordenarPorPrecioMayorAMenor(productos) {
+  productos.sort((a, b) => b.precio - a.precio);
+  return productos;
+}

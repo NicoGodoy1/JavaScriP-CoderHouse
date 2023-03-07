@@ -37,8 +37,8 @@
           </li>
         </ul>
         <form  class=" d-flex align-items-center justify-content-center me-5" role="search">
-          <input class="form-control border-morado-buscador" type="search" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search">
-          <button class="btn-morado-buscador h-100 w-25 ms-0 " type="submit" style="min-height: 40px; max-width: 300px;"><i class="bi bi-search"></i></button>
+          <!-- <input class="form-control border-morado-buscador buscador" id="buscador" type="search" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search"> -->
+          <!-- <button class="btn-morado-buscador h-100 w-25 ms-0 " type="submit" style="min-height: 40px; max-width: 300px;"><i class="bi bi-search"></i></button> -->
         </form>
         <form class="d-flex" role="search">
           <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button>
@@ -116,7 +116,9 @@
     <hr>
     <h2 class="gradiente-morado w-50 px-2 py-2">¡Aprovechá las ofertas destacadas!<i class="bi bi-phone-flip fs-1 mb-4 mx-2 align-items-center"></i></h2>
     <!-- ACA ESTÁ EL HTML DE LAS TARJETAS CREADAS EN JS  -->
-    <div class="container justify-content-center justify-content-evenly">
+    <div class="container justify-content-center justify-content-evenly" id="listaArticulos">
+
+      <input class="form-control border-morado-buscador buscador" id="input" type="text" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search">
       <div id="cards" class="row">
 
       </div>
