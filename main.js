@@ -137,7 +137,7 @@ productos.forEach(item => item.desplegarProducto());
 // EVENTO COMPRA
 productos.forEach(item => item.agregarEvento());
 
-
+//AGREGAR AL CARRITO
 function agregarAlCarrito(producto) {
     // console.log(producto)
     Swal.fire({
@@ -176,7 +176,7 @@ function agregarAlCarrito(producto) {
 }
 
 
-// vaciar carrito 
+// VACIAR CARRITO
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     contenedorCarrito.innerHTML = ""
@@ -186,7 +186,7 @@ botonVaciar.addEventListener('click', () => {
     </div>`
 })
 
-// eliminar producto 
+// ELIMINAR PRODUCTO
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((prod) => prod.id === prodId)
     const indice = carrito.indexOf(item) 
