@@ -99,3 +99,29 @@ function ordenarPorPrecioMayorAMenor(productos) {
   productos.sort((a, b) => b.precio - a.precio);
   return productos;
 }
+
+// imprimirBaseDatos()
+
+// LLAMADO A LA FUNCION DEL MENU 
+// ejecutarMenu()
+
+function imprimirBaseDatos() {
+  let op = parseInt(prompt("Desea mostrar en pantalla el cliente creado?:\n 1) Sí \n 2) No"))
+  if (op == 1) {
+      alert(JSON.stringify(baseDatosClientes))
+  } else {
+      alert("Muy buenas tardes")
+  }
+}
+let button = document.getElementById("boton");
+
+button.addEventListener("click", () => {
+  Swal.fire({
+    title: "Genial!",
+    text: "Has agregado un producto nuevo al carrito!",
+    icon: "success",
+    confirmButtonText: "Continuar",
+  });
+});
+
+// ---------------------------------------------------------------------------

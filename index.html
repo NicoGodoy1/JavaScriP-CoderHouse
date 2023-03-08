@@ -10,9 +10,6 @@
     <!-- bootstrap  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <!-- archivo js -->
-    <!-- <script src="./main.js"></script> -->
-    <!-- <script src="./prueba.js"></script> -->
     <!-- archivo css -->
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -36,42 +33,19 @@
             <a class="nav-link" href="./finalizarCompra.html">Carrito</a>
           </li>
         </ul>
-        <form  class=" d-flex align-items-center justify-content-center me-5" role="search">
-          <!-- <input class="form-control border-morado-buscador buscador" id="buscador" type="search" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search"> -->
-          <!-- <button class="btn-morado-buscador h-100 w-25 ms-0 " type="submit" style="min-height: 40px; max-width: 300px;"><i class="bi bi-search"></i></button> -->
-        </form>
-        <form class="d-flex" role="search">
-          <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button>
+        <form class="d-flex mx-3" role="search">
+          <!-- <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button> -->
+          <!-- <i class="bi bi-cart3"></i> -->
+          <div id="cart-icon">
+            <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button>
+            <div id="cart-count">0</div>
+          </div>
         </form>
       </div>
     </div>
   </nav>
 </header>
   <main>
-    <!-- Categorías -->
-    <section>
-      <nav class="navbar navbar-expand-lg bg-light mt-3">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-list ms-3 me-2 text-black"></i>Categorías
-                </a>
-                <ul class="dropdown-menu mx-5">
-                  <li><a class="dropdown-item" href="#">Categoría  uno</a></li>
-                  <li><a class="dropdown-item" href="#">Categoría  dos</a></li>
-                  <li><a class="dropdown-item" href="#">Categoría  tres</a></li>
-                  <li><a class="dropdown-item" href="#">Categoría  cuatro</a></li>
-                  <li><a class="dropdown-item" href="#">Categoría  cinco</a></li>
-                  <li><a class="dropdown-item" href="#">Categoría  seis</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </section>
     <!-- carousel -->
     <section class="carouselSection mt-4 p-2">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -99,31 +73,29 @@
         </button>
       </div>
     </section>
-    <!-- medios de pago -->
-    <hr>
-    <section class="container">
-      <div class="hstack gap-3 justify-content-center col-sm-12">
-        <!-- <div class="bg-body-tertiary border">Métodos de pago</div> -->
-        <div class="bg-body-tertiary border"><i class="bi bi-credit-card-2-back"></i></div>
-        <div class="vr"></div>
-        <div class="bg-body-tertiary border"><i class="bi bi-paypal"></i></div>
-        <div class="vr"></div>
-        <div class="bg-body-tertiary border"><i class="bi bi-cash-coin"></i></div>
-        <div class="vr"></div>
-        <img class="card-icon img-fluid" src="https://images.fravega.com/f100/165db2d0462bd48b0529bd51d748c281.png">
+    <section class="d-flex align-items-center justify-content-center text-primary" id="carro">
+      <div class="card" style="width: 400px;">
+        <div class="card-header d-flex justify-content-center fw-bold bg-warning fs-5">
+          Carrito<i class=" ms-2 bi bi-cart3"></i>
+        </div>
+        <div id="carrito-contenedor" class="list-group list-group-flush">
+          
+        </div>
+        <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
+        <button id="vaciar-carrito" class="btn-morado-buscador">Vaciar carrito</button>
       </div>
     </section>
-    <hr>
     <h2 class="gradiente-morado w-50 px-2 py-2">¡Aprovechá las ofertas destacadas!<i class="bi bi-phone-flip fs-1 mb-4 mx-2 align-items-center"></i></h2>
-    <!-- ACA ESTÁ EL HTML DE LAS TARJETAS CREADAS EN JS  -->
+     <!-- tarjetas de productos  -->
     <div class="container justify-content-center justify-content-evenly" id="listaArticulos">
-
-      <input class="form-control border-morado-buscador buscador" id="input" type="text" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search">
+      <form class="d-flex mx-3" role="search" id="formulario" >
+        <input class="form-control border-morado-buscador buscador" id="input"  type="text" style="max-height: 40px; width: 100%;" placeholder="Buscar productos" aria-label="Search">
+        <button class="btn-morado-buscador" type="submit" value="Enviar">Buscar</button>
+      </form>
       <div id="cards" class="row">
 
       </div>
     </div>
-    <!-- tarjetas de productos  -->
     <hr>
     <section>
       <div class="hstack gap-3 justify-content-center">

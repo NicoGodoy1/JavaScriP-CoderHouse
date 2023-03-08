@@ -1,6 +1,8 @@
 //CARRITO VACíO ARRAY
 let carrito = JSON.parse(localStorage.getItem('cart')) || [];
-baseDatosClientes = [];
+let carritoPrueba = []; 
+montoTotal = [];
+// baseDatosClientes = [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 function efectivo(monto) {
@@ -11,27 +13,30 @@ function credito(monto) {
     monto = monto + (monto*0.1)
     return monto
 }
+
 let contenedor = document.getElementById("cards");
+const contenedorCarrito = document.getElementById("carrito-contenedor")
 
-// let palabraBuscada = document.getElementById("input");
+//SEXTIMO PASO, MODIFICAR LOS CONTADORES
+const contadorCarrito = document.getElementById('contadorCarrito')
 
-
-// palabraBuscada.addEventListener("input", () => {
-//     const name = palabraBuscada.value;
-//     console.log(name);
-//     crearArreglo(name);
-// })
+//OCTAVO PASO
+const cantidad = document.getElementById('cantidad')
+const precioTotal = document.getElementById('precioTotal')
+const cantidadTotal = document.getElementById('cantidadTotal')
 
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {
 
     constructor(id, nombre, precio, url) {
+
         this.id = id;
         this.nombre =  nombre;
         this.precio = parseFloat(precio);
         this.url = url;
     }
     desplegarProducto() {
+
         contenedor.innerHTML += `
             <div class="col-lg-3 col-md-6 col-sm-4" >
                 <div class="card tarjetas__efecto" >
@@ -42,51 +47,25 @@ class Producto {
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center fs-3 fw-bold">${this.precio}</li>
                     <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
-                    <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Comprar</button>
+                    <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
+                    </button>
                     <h6 class="text-center">producto N°: ${this.id}</h6>
                     </ul>
                 </div>
             </div>
         `;
+        // const boton = document.getElementById(`${this.id}`)
+
+        // boton.addEventListener("click", ()=> {
+        //     agregarCarrito(this.id)
+        // } )
     }
     agregarEvento() {
+
         let botonComprar = document.getElementById(`${this.id}`)
-        let productoFiltrado = productos.filter( item => item.id == this.id)
+        let productoFiltrado = productos.filter( item => item.id === this.id)
         botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
-    }
-    // mostrarFiltrado() {
-    //     filtrados.forEach((item) => {
-    //         contenedor.innerHTML += `
-    //         <div class="col-lg-3 col-md-6 col-sm-4" >
-    //             <div class="card tarjetas__efecto" >
-    //                 <img src="${this.url}" class="card-img-top img-fluid" alt="...">
-    //                 <div class="card-body">
-    //                 <h5 class="card-title text-center" ">${this.nombre}</h5>
-    //                 </div>
-    //                 <ul class="list-group list-group-flush">
-    //                 <li class="list-group-item text-center fs-3 fw-bold">${this.precio}</li>
-    //                 <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
-    //                 <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Comprar</button>
-    //                 <h6 class="text-center">producto N°: ${this.id}</h6>
-    //                 </ul>
-    //             </div>
-    //         </div>
-    //     `;
-    //     //     let div = document.createElement("div");
-    //     //     div.innerHTML = `
-    //     //       <h2>Id: ${item.id}</h2>
-    //     //       <p>Nombre: ${item.nombre}</p>
-    //     //       <b>$${item.precio}</b>
-    //     //     `;
-          
-    //     //     document.body.append(div);
-    //       });
-    // }
-    mostrarMenorPrecio() {
-
-    }
-    mostrarMayorPrecio () {
-
+        // botonComprar.addEventListener('click', () => agregarCarrito(productoFiltrado[0]))
     }
 }
 
@@ -148,9 +127,9 @@ productos.forEach(item => item.desplegarProducto());
 // EVENTO COMPRA
 productos.forEach(item => item.agregarEvento());
 
+
 function agregarAlCarrito(producto) {
-    console.log(producto)
-    // carritoPrueba.push(producto);
+    // console.log(producto)
     Swal.fire({
         title: "Genial!",
         text: "Has agregado un producto nuevo al carrito!",
@@ -162,12 +141,125 @@ function agregarAlCarrito(producto) {
     name: producto.nombre,
     price: producto.precio,
     });
+    console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
-  }
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${producto.nombre}</p>
+        <p>Precio:$${producto.precio}</p>
+        <p>Cantidad: <span id="cantidad">${producto.id}</span></p>
+        <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        `
+
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
+        
+        contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+        precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+
+    })
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
+}
+
+
+    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
+    //empezando en 0.
+// function mostrarCarrito() {
+//     carrito.forEach((producto) => {
+//         contenedorCarrito.innerHTML = ""
+//         const div = document.createElement('div')
+//         div.className = ('productoEnCarrito')
+//         div.innerHTML = `
+//         <p>${producto.nombre}</p>
+//         <p>Precio:$${producto.precio}</p>
+//         <p>Cantidad: <span id="cantidad">${producto.id}</span></p>
+//         <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+//         `
+
+//         contenedorCarrito.appendChild(div)
+        
+//         localStorage.setItem('carrito', JSON.stringify(carrito))
+
+//     })
+// }
+
+// mostrarCarrito()
+
+// const agregarCarrito = (prodId)  => {
+//     const item = productos.find((prod)  => prod.id === prodId) 
+//     console.log(item)
+//     carritoPrueba.push(item)
+//     console.log(carritoPrueba)
+// }
+
+
+// MOSTRAR NUMERO EN CARRITO - LOCALSTORAGE LENGHT
+const cartCount = document.getElementById('cart-count');
+cartCount.innerHTML = `<div>${localStorage.length}</div>`;
+// const cartCount = document.getElementById('cart-count');
+// cartCount.innerHTML = `<div>${carrito.length}</div>`;
+
+
+//CARRITO RENDERIZADO
+
+// carrito.forEach((item) => {
+//     let div = document.createElement("div");
+//     div.innerHTML = `
+//       <div class="col-lg-3 col-md-6 col-sm-4" >
+//           <div class="card tarjetas__efecto" >
+//               <img src="${item.url}" class="card-img-top img-fluid" alt="...">
+//               <div class="card-body">
+//               <h5 class="card-title text-center" ">${item.nombre}</h5>
+//               </div>
+//               <ul class="list-group list-group-flush">
+//               <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
+//               <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+//               <button id=${item.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button>
+//               <h6 class="text-center">producto N°: ${item.id}</h6>
+//               </ul>
+//           </div>
+//       </div>
+//     `;
+  
+//     document.body.append(div);
+// }
 
 // FILTRO
 let precio = parseInt(prompt("Ingrese el precio minimo"));
 let filtrados = productos.filter(item => item.precio > precio);
+
+let formulario = document.getElementById("formulario");
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let inputs = e.target.children;
+
+  let usuariosStorage = localStorage.getItem("items");
+
+  if (usuariosStorage) {
+    usuarios = JSON.parse(usuariosStorage);
+  } else {
+    usuarios = [];
+  }
+
+  let nombre = inputs[0].value;
+  let edad = inputs[1].value;
+  let usuario = {
+    id: usuarios.length + 1,
+    nombre,
+    edad,
+  };
+
+  usuarios.push(usuario);
+  localStorage.setItem("items", JSON.stringify(usuarios));
+});
+
 
 filtrados.forEach((item) => {
   let div = document.createElement("div");
@@ -190,18 +282,6 @@ filtrados.forEach((item) => {
 
   document.body.append(div);
 });
-// ---------------------
-
-
-// let input1 = document.getElementById("input");
-
-// input1.addEventListener("input", () => {
-//     const name = input1.value;
-//     console.log(name);
-//     desplegarFiltrado(name)
-    
-// })
-
 
 
 // DECLARO OBJETO CLIENTE    
@@ -233,27 +313,4 @@ class Cliente {
 }
 
 
-// LLAMADO A LA FUNCION DEL MENU 
-// ejecutarMenu()
 
-function imprimirBaseDatos() {
-    let op = parseInt(prompt("Desea mostrar en pantalla el cliente creado?:\n 1) Sí \n 2) No"))
-    if (op == 1) {
-        alert(JSON.stringify(baseDatosClientes))
-    } else {
-        alert("Muy buenas tardes")
-    }
-}
-
-// imprimirBaseDatos()
-
-let button = document.getElementById("boton");
-
-button.addEventListener("click", () => {
-  Swal.fire({
-    title: "Genial!",
-    text: "Has agregado un producto nuevo al carrito!",
-    icon: "success",
-    confirmButtonText: "Continuar",
-  });
-});
