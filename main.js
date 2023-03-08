@@ -15,6 +15,8 @@ function credito(monto) {
 }
 
 let contenedor = document.getElementById("cards");
+let contenedorFiltrados = document.getElementById("filtrados");
+
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 
 //SEXTIMO PASO, MODIFICAR LOS CONTADORES
@@ -26,16 +28,20 @@ const cantidadTotal = document.getElementById('cantidadTotal')
 
 const botonVaciar = document.getElementById('vaciar-carrito')
 
+let botonCelulares = document.getElementById("filtrarCelulares")
+let botonAuriculares = document.getElementById("filtrarAuriculares")
+let botonFundas = document.getElementById("filtrarFundas")
 
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {
 
-    constructor(id, nombre, precio, url) {
+    constructor(id, nombre, precio, url, tipo) {
 
         this.id = id;
         this.nombre =  nombre;
         this.precio = parseFloat(precio);
         this.url = url;
+        this.tipo = tipo;
     }
     desplegarProducto() {
 
@@ -63,32 +69,37 @@ class Producto {
         let productoFiltrado = productos.filter( item => item.id === this.id)
         botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
     }
+
 }
 
 // // ARRAY DE PRODUCTOS 
 const productos = [];
 
-const  producto1 = new Producto(1,"Moto E20", 35000.00, "./recursos/productos/motorE20.png");
-const  producto2 = new Producto(2,"Moto E40", 40000.00, "./recursos/productos/motoE40.png");
-const  producto3 = new Producto(3,"Moto E32", 45000.00, "./recursos/productos/motoE32.png");
-const  producto4 = new Producto(4,"Moto G22", 50000.00, "./recursos/productos/motoG22.png");
-const  producto5 = new Producto(5,"Moto G32", 55000.00, "./recursos/productos/motoG32.png");
-const  producto6 = new Producto(6,"Moto G42", 60000.00, "./recursos/productos/motoG42.png");
-const  producto7 = new Producto(7,"Moto G52", 65000.00, "./recursos/productos/motoG52.png");
-const  producto8 = new Producto(8,"Moto G82", 70000.00, "./recursos/productos/motoG82.png");
-const  producto9 = new Producto(9,"Moto Edge30 Ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png");
-const producto10 = new Producto(10,"Moto Edge30 Fusionse", 80000.00, "./recursos/productos/motoEdge30fusionSe.png");
-const producto11 = new Producto(11,"Moto Edge30 Fusion", 85000.00, "./recursos/productos/motoEdge30Fusion.png");
-const producto12 = new Producto(12,"Moto Edge30 Neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png");
-const producto13 = new Producto(13,"Moto Edge30", 95000.00, "./recursos/productos/motoEdge30.png");
-const producto14 = new Producto(14,"Moto Earbuds 3-s", 3000.00, "./recursos/productos/MotorolaEarbuds3S.png");
-const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/productos/Motorola Earbuds 105.png");
-const producto16 = new Producto(16,"Auri Inalámbricos Moto XT220", 4000.00, "./recursos/productos/Auriculares Inalámbricos Moto XT220.png");
-const producto17 = new Producto(17,"Auriculares Moto XT120", 45000.00, "./recursos/productos/Auriculares Moto XT120.png");
-const producto18 = new Producto(18,"Auriculares Moto XT200", 5000.00, "./recursos/productos/Auriculares Moto XT200.png");
-const producto19 = new Producto(19,"Auriculares Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp");
-const producto20 = new Producto(20,"Moto Buds 085", 6000.00, "./recursos/productos/Moto Buds 085.webp");
-const producto21 = new Producto(21,"Moto Buds 250", 6500.00, "./recursos/productos/Moto Buds 250.png");
+const  producto1 = new Producto(1,"Moto E20", 35000.00, "./recursos/productos/motorE20.png","celular");
+const  producto2 = new Producto(2,"Moto E40", 40000.00, "./recursos/productos/motoE40.png","celular");
+const  producto3 = new Producto(3,"Moto E32", 45000.00, "./recursos/productos/motoE32.png","celular");
+const  producto4 = new Producto(4,"Moto G22", 50000.00, "./recursos/productos/motoG22.png","celular");
+const  producto5 = new Producto(5,"Moto G32", 55000.00, "./recursos/productos/motoG32.png","celular");
+const  producto6 = new Producto(6,"Moto G42", 60000.00, "./recursos/productos/motoG42.png","celular");
+const  producto7 = new Producto(7,"Moto G52", 65000.00, "./recursos/productos/motoG52.png","celular");
+const  producto8 = new Producto(8,"Moto G82", 70000.00, "./recursos/productos/motoG82.png","celular");
+const  producto9 = new Producto(9,"Moto Edge30 Ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png","celular");
+const producto10 = new Producto(10,"Moto Edge30 Fusionse", 80000.00, "./recursos/productos/motoEdge30fusionSe.png","celular");
+const producto11 = new Producto(11,"Moto Edge30 Fusion", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
+const producto12 = new Producto(12,"Moto Edge30 Neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png","celular");
+const producto13 = new Producto(13,"Moto Edge30", 95000.00, "./recursos/productos/motoEdge30.png","celular");
+const producto14 = new Producto(14,"Moto Earbuds 3-s", 3000.00, "./recursos/productos/MotorolaEarbuds3S.png","celular");
+const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/productos/Motorola Earbuds 105.png","celular");
+const producto16 = new Producto(16,"Auri Inalámbricos Moto XT220", 4000.00, "./recursos/productos/Auriculares Inalámbricos Moto XT220.png","auricular");
+const producto17 = new Producto(17,"Auriculares Moto XT120", 45000.00, "./recursos/productos/Auriculares Moto XT120.png","auricular");
+const producto18 = new Producto(18,"Auriculares Moto XT200", 5000.00, "./recursos/productos/Auriculares Moto XT200.png","auricular");
+const producto19 = new Producto(19,"Auriculares Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp","auricular");
+const producto20 = new Producto(20,"Moto Buds 085", 6000.00, "./recursos/productos/Moto Buds 085.webp","auricular");
+const producto21 = new Producto(21,"Moto Buds 250", 6500.00, "./recursos/productos/Moto Buds 250.png","auricular");
+const producto22 = new Producto(22,"Funda Violeta", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
+const producto23 = new Producto(23,"Funda Azul", 2000.00, "./recursos/productos/Funda Protectora Premium Azul.png","funda");
+const producto24 = new Producto(24,"Funda 30 Fusion", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Fusion.png","funda");
+const producto25 = new Producto(25,"Funda 30 Ultra", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Ultra.png","funda");
 
 
 productos.push(producto1);
@@ -113,6 +124,10 @@ productos.push(producto18);
 productos.push(producto19);
 productos.push(producto20);
 productos.push(producto21);
+productos.push(producto22);
+productos.push(producto23);
+productos.push(producto24);
+productos.push(producto25);
 
 
 
@@ -148,7 +163,8 @@ function agregarAlCarrito(producto) {
         <p>${prod.nombre}</p>
         <p>Precio:$${prod.precio}</p>
         <p>Id:<span id="cantidad">${prod.id}</span></p>
-        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
+        </button>
         `
 
         contenedorCarrito.appendChild(div)
@@ -156,9 +172,8 @@ function agregarAlCarrito(producto) {
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
     })
-    contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
+    contadorCarrito.innerText = carrito.length 
 }
-
 
 
 // vaciar carrito 
@@ -171,68 +186,36 @@ botonVaciar.addEventListener('click', () => {
     </div>`
 })
 
-// MOSTRAR NUMERO EN CARRITO - CARRITO LENGTH
+// eliminar producto 
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+    const indice = carrito.indexOf(item) 
+    carrito.splice(indice, 1)  
+    contenedorCarrito.innerHTML = ""
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Id:<span id="cantidad">${prod.id}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
+        </button>
+        `
 
-const cartCount = document.getElementById('cart-count');
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
 
-// FILTRO
-function filtrarValorMáximo() {
+    })
+    contadorCarrito.innerText = carrito.length 
 
 }
 
 
-let precio = parseInt(prompt("Ingrese el precio minimo"));
-let filtrados = productos.filter(item => item.precio > precio);
+// MOSTRAR NUMERO EN CARRITO - CARRITO LENGTH
 
-let formulario = document.getElementById("formulario");
-formulario.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  let inputs = e.target.children;
-
-  let usuariosStorage = localStorage.getItem("items");
-
-  if (usuariosStorage) {
-    usuarios = JSON.parse(usuariosStorage);
-  } else {
-    usuarios = [];
-  }
-
-  let nombre = inputs[0].value;
-  let edad = inputs[1].value;
-  let usuario = {
-    id: usuarios.length + 1,
-    nombre,
-    edad,
-  };
-
-  usuarios.push(usuario);
-  localStorage.setItem("items", JSON.stringify(usuarios));
-});
-
-
-filtrados.forEach((item) => {
-  let div = document.createElement("div");
-  div.innerHTML = `
-    <div class="col-lg-3 col-md-6 col-sm-4" >
-        <div class="card tarjetas__efecto" >
-            <img src="${item.url}" class="card-img-top img-fluid" alt="...">
-            <div class="card-body">
-            <h5 class="card-title text-center" ">${item.nombre}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
-            <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
-            <button id=${item.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button>
-            <h6 class="text-center">producto N°: ${item.id}</h6>
-            </ul>
-        </div>
-    </div>
-  `;
-
-  document.body.append(div);
-});
-
+const cartCount = document.getElementById('cart-count');
 
 // DECLARO OBJETO CLIENTE    
 class Cliente {

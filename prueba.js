@@ -125,3 +125,52 @@ button.addEventListener("click", () => {
 });
 
 // ---------------------------------------------------------------------------
+
+// FILTRO
+
+function filtrar(tipo) {
+
+  filtrados =  productos.filter(item => item.tipo === tipo);
+  // return filtrados
+  contenedor.innerHTML = ""
+  filtrados.forEach(item => item.desplegarFiltro());
+}
+
+// botonCelulares.addEventListener('click', () => filtrar(celular))
+botonAuriculares.addEventListener('click', () => filtrar(auricular))
+botonFundas.addEventListener('click', () => filtrar(funda))
+
+
+
+// let precio = parseInt(prompt("Ingrese el precio minimo"));
+let filtrados = productos.filter(item => item.precio > precio);
+filtrados = productos.filter(item => item.tipo === tipo)
+
+
+botonCelulares.addEventListener('click', () => {
+  filtrados =  productos.filter(item => item.celular === celular);
+  contenedorCarrito.innerHTML = ""
+  filtrados.forEach((item) => {
+      contenedorFiltrados.innerHTML += `
+        <div class="col-lg-3 col-md-6 col-sm-4" >
+            <div class="card tarjetas__efecto" >
+                <img src="${item.url}" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                <h5 class="card-title text-center" ">${item.nombre}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
+                <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+                <button id=${item.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button>
+                <h6 class="text-center">producto N°: ${item.id}</h6>
+                </ul>
+            </div>
+        </div>
+      `;
+    
+    });
+  
+});
+
+
+
