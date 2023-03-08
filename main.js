@@ -26,6 +26,7 @@ const botonVaciar = document.getElementById('vaciar-carrito')
 
 
 // DECLARACIÓN OBJETO PRODUCTO
+
 class Producto {
 
     constructor(id, nombre, precio, url, tipo) {
@@ -125,30 +126,37 @@ productos.push(producto25);
 
 
 // DOM 
+
 productos.forEach(item => item.desplegarProducto());
 
 // EVENTO COMPRA
+
 productos.forEach(item => item.agregarEvento());
 
 //AGREGAR AL CARRITO
+
 function agregarAlCarrito(producto) {
-    // console.log(producto)
     Swal.fire({
         title: "Genial!",
         text: "Has agregado un producto nuevo al carrito!",
         icon: "success",
         confirmButtonText: "Continuar",
       });
+
     carrito.push({
     id: producto.id,
     nombre: producto.nombre,
     precio: producto.precio,
     });
+
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
+
     montoTotal += producto.precio;
     precioTotal.innerText = montoTotal;
+
     contenedorCarrito.innerHTML = ""
+
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
@@ -170,6 +178,7 @@ function agregarAlCarrito(producto) {
 
 
 // VACIAR CARRITO
+
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0
     contenedorCarrito.innerHTML = ""
@@ -180,11 +189,15 @@ botonVaciar.addEventListener('click', () => {
 })
 
 // ELIMINAR PRODUCTO
+
 const eliminarDelCarrito = (prodId) => {
+
     const item = carrito.find((prod) => prod.id === prodId)
     const indice = carrito.indexOf(item) 
     carrito.splice(indice, 1)  
+
     contenedorCarrito.innerHTML = ""
+
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
@@ -211,6 +224,7 @@ const eliminarDelCarrito = (prodId) => {
 const cartCount = document.getElementById('cart-count');
 
 // DECLARO OBJETO CLIENTE    
+
 class Cliente {
 
     constructor(dni, nombre, apellido, direccion, correo) {
