@@ -1,10 +1,9 @@
 //CARRITO VACíO ARRAY
-let carrito = JSON.parse(localStorage.getItem('cart')) || [];
-let carritoPrueba = []; 
-let montoTotal = 0;
 
+let carrito = JSON.parse(localStorage.getItem('cart')) || [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
+
 function efectivo(monto) {
     monto = monto - (monto*0.2)
     return monto
@@ -14,23 +13,17 @@ function credito(monto) {
     return monto
 }
 
+// VARIABLES
+let montoTotal = 0;
 let contenedor = document.getElementById("cards");
 let contenedorFiltrados = document.getElementById("filtrados");
-
 const contenedorCarrito = document.getElementById("carrito-contenedor")
-
-//SEXTIMO PASO, MODIFICAR LOS CONTADORES
 const contadorCarrito = document.getElementById('cart-count')
-
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
-
 const botonVaciar = document.getElementById('vaciar-carrito')
 
-let botonCelulares = document.getElementById("filtrarCelulares")
-let botonAuriculares = document.getElementById("filtrarAuriculares")
-let botonFundas = document.getElementById("filtrarFundas")
 
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {

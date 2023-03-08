@@ -127,6 +127,9 @@ button.addEventListener("click", () => {
 // ---------------------------------------------------------------------------
 
 // FILTRO
+let botonCelulares = document.getElementById("filtrarCelulares")
+let botonAuriculares = document.getElementById("filtrarAuriculares")
+let botonFundas = document.getElementById("filtrarFundas")
 
 function filtrar(tipo) {
 
