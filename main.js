@@ -24,6 +24,9 @@ const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 
+const botonVaciar = document.getElementById('vaciar-carrito')
+
+
 // DECLARACIÓN OBJETO PRODUCTO
 class Producto {
 
@@ -105,7 +108,6 @@ productos.push(producto13);
 productos.push(producto14);
 productos.push(producto15);
 productos.push(producto16);
-
 productos.push(producto17);
 productos.push(producto18);
 productos.push(producto19);
@@ -131,21 +133,22 @@ function agregarAlCarrito(producto) {
       });
     carrito.push({
     id: producto.id,
-    name: producto.nombre,
-    price: producto.precio,
+    nombre: producto.nombre,
+    precio: producto.precio,
     });
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
     montoTotal += producto.precio;
     precioTotal.innerText = montoTotal;
+    contenedorCarrito.innerHTML = ""
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
-        <p>${producto.nombre}</p>
-        <p>Precio:$${producto.precio}</p>
-        <p>Cantidad: <span id="cantidad">${producto.id}</span></p>
-        <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Id:<span id="cantidad">${prod.id}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
         `
 
         contenedorCarrito.appendChild(div)
@@ -157,10 +160,27 @@ function agregarAlCarrito(producto) {
 }
 
 
-// MOSTRAR NUMERO EN CARRITO - LOCALSTORAGE LENGHT
+
+// vaciar carrito 
+botonVaciar.addEventListener('click', () => {
+    carrito.length = 0
+    contenedorCarrito.innerHTML = ""
+    precioTotal.innerText = 0
+    cartCount.innerText = 0
+    contenedorCarrito.innerHTML= `<div class= "m-5 fw-bold">CARRITO VACIADO<i class="ms-3 fs-3 fw-bold bi bi-cart-x"></i>
+    </div>`
+})
+
+// MOSTRAR NUMERO EN CARRITO - CARRITO LENGTH
+
 const cartCount = document.getElementById('cart-count');
 
 // FILTRO
+function filtrarValorMáximo() {
+
+}
+
+
 let precio = parseInt(prompt("Ingrese el precio minimo"));
 let filtrados = productos.filter(item => item.precio > precio);
 
