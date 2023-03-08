@@ -1,6 +1,7 @@
 //CARRITO VACíO ARRAY
 
-let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+// let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+let carrito = [];
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 
@@ -208,7 +209,6 @@ const eliminarDelCarrito = (prodId) => {
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
         </button>
         `
-
         contenedorCarrito.appendChild(div)
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
