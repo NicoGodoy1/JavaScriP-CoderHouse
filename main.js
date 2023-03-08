@@ -1,8 +1,8 @@
 //CARRITO VACíO ARRAY
 let carrito = JSON.parse(localStorage.getItem('cart')) || [];
 let carritoPrueba = []; 
-montoTotal = [];
-// baseDatosClientes = [];
+let montoTotal = 0;
+
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 function efectivo(monto) {
@@ -18,9 +18,8 @@ let contenedor = document.getElementById("cards");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 
 //SEXTIMO PASO, MODIFICAR LOS CONTADORES
-const contadorCarrito = document.getElementById('contadorCarrito')
+const contadorCarrito = document.getElementById('cart-count')
 
-//OCTAVO PASO
 const cantidad = document.getElementById('cantidad')
 const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
@@ -54,18 +53,12 @@ class Producto {
                 </div>
             </div>
         `;
-        // const boton = document.getElementById(`${this.id}`)
-
-        // boton.addEventListener("click", ()=> {
-        //     agregarCarrito(this.id)
-        // } )
     }
     agregarEvento() {
 
         let botonComprar = document.getElementById(`${this.id}`)
         let productoFiltrado = productos.filter( item => item.id === this.id)
         botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
-        // botonComprar.addEventListener('click', () => agregarCarrito(productoFiltrado[0]))
     }
 }
 
@@ -143,6 +136,8 @@ function agregarAlCarrito(producto) {
     });
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
+    montoTotal += producto.precio;
+    precioTotal.innerText = montoTotal;
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
@@ -157,78 +152,13 @@ function agregarAlCarrito(producto) {
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
 
-        
-        contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
-        precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
-
     })
-    localStorage.setItem('carrito', JSON.stringify(carrito))
     contadorCarrito.innerText = carrito.length // actualizamos con la longitud del carrito.
-    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.cantidad * prod.precio, 0)
 }
-
-
-    //Por cada producto q recorro en mi carrito, al acumulador le suma la propiedad precio, con el acumulador
-    //empezando en 0.
-// function mostrarCarrito() {
-//     carrito.forEach((producto) => {
-//         contenedorCarrito.innerHTML = ""
-//         const div = document.createElement('div')
-//         div.className = ('productoEnCarrito')
-//         div.innerHTML = `
-//         <p>${producto.nombre}</p>
-//         <p>Precio:$${producto.precio}</p>
-//         <p>Cantidad: <span id="cantidad">${producto.id}</span></p>
-//         <button onclick="eliminarDelCarrito(${producto.id})" class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
-//         `
-
-//         contenedorCarrito.appendChild(div)
-        
-//         localStorage.setItem('carrito', JSON.stringify(carrito))
-
-//     })
-// }
-
-// mostrarCarrito()
-
-// const agregarCarrito = (prodId)  => {
-//     const item = productos.find((prod)  => prod.id === prodId) 
-//     console.log(item)
-//     carritoPrueba.push(item)
-//     console.log(carritoPrueba)
-// }
 
 
 // MOSTRAR NUMERO EN CARRITO - LOCALSTORAGE LENGHT
 const cartCount = document.getElementById('cart-count');
-cartCount.innerHTML = `<div>${localStorage.length}</div>`;
-// const cartCount = document.getElementById('cart-count');
-// cartCount.innerHTML = `<div>${carrito.length}</div>`;
-
-
-//CARRITO RENDERIZADO
-
-// carrito.forEach((item) => {
-//     let div = document.createElement("div");
-//     div.innerHTML = `
-//       <div class="col-lg-3 col-md-6 col-sm-4" >
-//           <div class="card tarjetas__efecto" >
-//               <img src="${item.url}" class="card-img-top img-fluid" alt="...">
-//               <div class="card-body">
-//               <h5 class="card-title text-center" ">${item.nombre}</h5>
-//               </div>
-//               <ul class="list-group list-group-flush">
-//               <li class="list-group-item text-center fs-3 fw-bold">${item.precio}</li>
-//               <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
-//               <button id=${item.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${item.precio}">Comprar</button>
-//               <h6 class="text-center">producto N°: ${item.id}</h6>
-//               </ul>
-//           </div>
-//       </div>
-//     `;
-  
-//     document.body.append(div);
-// }
 
 // FILTRO
 let precio = parseInt(prompt("Ingrese el precio minimo"));
