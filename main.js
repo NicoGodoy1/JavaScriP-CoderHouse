@@ -1,7 +1,8 @@
 //CARRITO VACíO ARRAY
 
-// let carrito = JSON.parse(localStorage.getItem('cart')) || [];
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+// let carrito = [];
+
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 
@@ -43,9 +44,9 @@ class Producto {
         contenedor.innerHTML += `
             <div class="col-lg-3 col-md-6 col-sm-4" >
                 <div class="card tarjetas__efecto" >
-                    <img src="${this.url}" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title text-center" ">${this.nombre}</h5>
+                    <img src="${this.url}" class="card-img-top img-fluid" max-height 174px; alt="...">
+                    <div class="card-body f-5 m-1">
+                    <h5 class="card-title text-center f-3" ">${this.nombre}</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center fs-3 fw-bold">${this.precio}</li>
@@ -172,9 +173,22 @@ function agregarAlCarrito(producto) {
         contenedorCarrito.appendChild(div)
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
+        console.log(localStorage)
+        carritoImprimir = localStorage.getItem("carrito"); 
+        console.log(carritoImprimir);
+        console.log(typeof carritoImprimir);
+        prueba = JSON.parse(carritoImprimir)
+        console.log(typeof prueba);
+        console.log(prueba)
+        console.log(prueba.length)
+
+
+        // console.log(carritoImprimir.length);
+
 
     })
-    contadorCarrito.innerText = carrito.length 
+    contadorCarrito.innerText = prueba.length 
+    // contadorCarrito.innerText = localStorage.length 
 }
 
 
@@ -187,6 +201,7 @@ botonVaciar.addEventListener('click', () => {
     cartCount.innerText = 0
     contenedorCarrito.innerHTML= `<div class= "m-5 fw-bold">CARRITO VACIADO<i class="ms-3 fs-3 fw-bold bi bi-cart-x"></i>
     </div>`
+    localStorage.clear();
 })
 
 // ELIMINAR PRODUCTO
@@ -212,9 +227,11 @@ const eliminarDelCarrito = (prodId) => {
         contenedorCarrito.appendChild(div)
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
+        // localStorage.setItem(JSON.stringify(carrito))
 
     })
     contadorCarrito.innerText = carrito.length 
+    // contadorCarrito.innerText = localStorage.length 
 
 }
 
