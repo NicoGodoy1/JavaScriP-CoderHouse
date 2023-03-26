@@ -30,14 +30,15 @@
             <a class="nav-link" aria-current="page" href="./index.html">CeluYa!<i class="bi bi-phone-flip"></i>créditos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./finalizarCompra.html">Carrito</a>
+            <a class="nav-link" href="./carrito.html">Carrito</a>
           </li>
         </ul>
         <form class="d-flex mx-3" role="search">
           <!-- <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button> -->
           <!-- <i class="bi bi-cart3"></i> -->
           <div id="cart-icon">
-            <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"><a href="./finalizarCompra.html"></a></i></button>
+            <a href="./carrito.html"><button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"></i></button></a>
+            <!-- <button class="btn btn-outline-warning ms-2" type="submit" style="margin-top: 5px;"><i class="bi bi-cart3"></i></button> -->
             <div id="cart-count">0</div>
           </div>
         </form>
@@ -46,8 +47,43 @@
   </nav>
 </header>
   <main>
-    <!-- carousel -->
-    <section class="carouselSection mt-4 p-2">
+    <section class="d-flex align-items-center justify-content-center text-primary my-3" id="carro">
+      <div class="card" style="width: 400px;">
+        <div class="card-header d-flex justify-content-center fw-bold bg-warning fs-5">
+          Carrito<i class=" ms-2 bi bi-cart3"></i>
+        </div>
+        <div id="carrito-contenedor" class="list-group list-group-flush">
+          CARRITO VACIO
+        </div>
+        <p class="precioProducto fs-4">Precio total: $<span id="precioTotal">0</span></p>
+        <button id="vaciar-carrito" class="btn-morado-buscador">Vaciar carrito</button>
+      </div>
+    </section>
+    <h2 class="gradiente-morado w-75 px-2 py-2">¡Aprovechá las ofertas destacadas!<i class="bi bi-phone-flip fs-1 mb-4 mx-2 align-items-center"></i></h2>
+     <!-- tarjetas de productos  -->
+    <div class="container justify-content-center justify-content-evenly" id="listaArticulos">
+      <div id="cards" class="row">
+
+      </div>
+      <div id="filtrados" class="row">
+
+      </div>
+    </div>
+    <hr>
+    <section>
+      <div class="hstack gap-3 justify-content-center">
+        <!-- <div class="bg-body-tertiary border">Métodos de pago</div> -->
+        <div class="bg-body-tertiary border"><i class="bi bi-credit-card-2-back"></i></div>
+        <div class="vr"></div>
+        <div class="bg-body-tertiary border"><i class="bi bi-paypal"></i></div>
+        <div class="vr"></div>
+        <div class="bg-body-tertiary border"><i class="bi bi-cash-coin"></i></div>
+        <div class="vr"></div>
+        <!-- <img class="card-icon" src="https://images.fravega.com/f100/165db2d0462bd48b0529bd51d748c281.png"> -->
+      </div>
+    </section>
+     <!-- carousel -->
+     <section class="carouselSection mt-4 p-2">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -71,53 +107,6 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
-    </section>
-    <section class="d-flex align-items-center justify-content-center text-primary my-3" id="carro">
-      <div class="card" style="width: 400px;">
-        <div class="card-header d-flex justify-content-center fw-bold bg-warning fs-5">
-          Carrito<i class=" ms-2 bi bi-cart3"></i>
-        </div>
-        <div id="carrito-contenedor" class="list-group list-group-flush">
-          CARRITO VACIO
-        </div>
-        <p class="precioProducto fs-4">Precio total: $<span id="precioTotal">0</span></p>
-        <button id="vaciar-carrito" class="btn-morado-buscador">Vaciar carrito</button>
-      </div>
-    </section>
-    <h2 class="gradiente-morado w-75 px-2 py-2">¡Aprovechá las ofertas destacadas!<i class="bi bi-phone-flip fs-1 mb-4 mx-2 align-items-center"></i></h2>
-     <!-- tarjetas de productos  -->
-    <div class="container justify-content-center justify-content-evenly" id="listaArticulos">
-      <!-- <form class="d-flex mx-3" role="search" id="formulario" >
-        <input class="form-control border-morado-buscador buscador" id="input"  type="text" style="max-height: 40px; width: 100%;" placeholder="Escriba el monto máximo que desea gastar..." aria-label="Search">
-        <button class="btn-morado-buscador" type="submit" value="Enviar">Buscar</button>
-      </form> -->
-      <!-- <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">¿Qué buscás?</h5>
-        </div>
-        <button class="btn-morado m-1" id="filtrarCelulares">Celulares</button>
-        <button class="btn-morado m-1" id="filtrarAuriculares">Auriculares</button>
-        <button class="btn-morado m-1" id="filtrarFundas">Fundas</button>
-      </div> -->
-      <div id="cards" class="row">
-
-      </div>
-      <div id="filtrados" class="row">
-
-      </div>
-    </div>
-    <hr>
-    <section>
-      <div class="hstack gap-3 justify-content-center">
-        <!-- <div class="bg-body-tertiary border">Métodos de pago</div> -->
-        <div class="bg-body-tertiary border"><i class="bi bi-credit-card-2-back"></i></div>
-        <div class="vr"></div>
-        <div class="bg-body-tertiary border"><i class="bi bi-paypal"></i></div>
-        <div class="vr"></div>
-        <div class="bg-body-tertiary border"><i class="bi bi-cash-coin"></i></div>
-        <div class="vr"></div>
-        <!-- <img class="card-icon" src="https://images.fravega.com/f100/165db2d0462bd48b0529bd51d748c281.png"> -->
       </div>
     </section>
     <hr> 

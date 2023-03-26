@@ -3,6 +3,36 @@
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 // let carrito = [];
 
+// ACTUALIZA CARRITO 
+const actualizarCarrito = () => {
+    
+    contenedorCarrito.innerHTML = "" 
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio:$${prod.precio}</p>
+        <p>Id:<span id="cantidad">${prod.id}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
+        </button>
+        `
+        contenedorCarrito.appendChild(div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+
+    })
+    contadorCarrito.innerText = carrito.length 
+ 
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
+    }
+})
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
 
@@ -22,7 +52,7 @@ let contenedorFiltrados = document.getElementById("filtrados");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 const contadorCarrito = document.getElementById('cart-count')
 const cantidad = document.getElementById('cantidad')
-const precioTotal = document.getElementById('precioTotal')
+// const precioTotal = document.getElementById('precioTotal')
 const cantidadTotal = document.getElementById('cantidadTotal')
 const botonVaciar = document.getElementById('vaciar-carrito')
 
@@ -154,8 +184,8 @@ function agregarAlCarrito(producto) {
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
-    montoTotal += producto.precio;
-    precioTotal.innerText = montoTotal;
+    // montoTotal += producto.precio;
+    // precioTotal.innerText = montoTotal;
 
     contenedorCarrito.innerHTML = ""
 
@@ -187,6 +217,8 @@ function agregarAlCarrito(producto) {
 
 
     })
+    precioTotal.innerText = carrito.reduce((acc, prod) => acc +  prod.precio, 0)
+
     contadorCarrito.innerText = prueba.length 
     // contadorCarrito.innerText = localStorage.length 
 }
@@ -214,6 +246,7 @@ const eliminarDelCarrito = (prodId) => {
 
     contenedorCarrito.innerHTML = ""
 
+
     carrito.forEach((prod) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
@@ -231,8 +264,8 @@ const eliminarDelCarrito = (prodId) => {
 
     })
     contadorCarrito.innerText = carrito.length 
+    precioTotal.innerText = (-1)*(carrito.reduce((acc, prod) => acc -  prod.precio, 0))
     // contadorCarrito.innerText = localStorage.length 
-
 }
 
 
@@ -268,6 +301,4 @@ class Cliente {
         alert("Se le ha enviado la factura al correo "+ this.correo)
     }
 }
-
-
 
