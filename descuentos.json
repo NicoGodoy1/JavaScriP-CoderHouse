@@ -3,6 +3,6 @@
     {"id": 27,"nombre": "Funda 30 Ultra", "precio": 2400.00,"precioSinDescuento": 3000.00,"url": "./recursos/productos/Funda Protectora - Edge 30 Ultra.png","tipo": "funda"},
     {"id": 28,"nombre": "Moto Edge30 Ultra","precio": 60000.00,"precioSinDescuento": 75000, "url":  "./recursos/productos/motoEdge30ultra.png","tipo": "celular"},
     {"id": 29,"nombre":"Moto Edge30 Fusion","precio": 64000.00,"precioSinDescuento":80000.00, "url": "./recursos/productos/motoEdge30fusionSe.png","tipo": "celular"},
-    {"id": 30,"nombre": "Moto Edge30 FusionSE","precio": 68000.00,"precioSinDescuento":85000.00,"url": "./recursos/productos/motoEdge30Fusion.png","tipo": "celular"},
+    {"id": 30,"nombre": "Moto Edge30 Fusion","precio": 68000.00,"precioSinDescuento":85000.00,"url": "./recursos/productos/motoEdge30Fusion.png","tipo": "celular"},
     {"id": 40,"nombre": "Moto Edge30 Neo","precio": 72000.00,"precioSinDescuento": 90000.00,"url": "./recursos/productos/motoEdge30ultraNeo.png","tipo": "celular"}
 ]
