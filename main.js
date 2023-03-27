@@ -47,6 +47,7 @@ function credito(monto) {
 // VARIABLES
 let montoTotal = 0;
 let contenedor = document.getElementById("cards");
+let contenedorDescuentos = document.getElementById("listado");
 let contenedorFiltrados = document.getElementById("filtrados");
 const contenedorCarrito = document.getElementById("carrito-contenedor")
 const contadorCarrito = document.getElementById('cart-count')
@@ -88,7 +89,6 @@ class Producto {
             </div>
         `;
     }
-    // let listado = document.getElementById("listado");
     agregarEvento() {
 
         let botonComprar = document.getElementById(`${this.id}`)
@@ -98,7 +98,7 @@ class Producto {
 
 }
 
-// // ARRAY DE PRODUCTOS 
+// ARRAY DE PRODUCTOS 
 const productos = [];
 
 const  producto1 = new Producto(1,"Moto E20", 35000.00, "./recursos/productos/motorE20.png","celular");
@@ -111,7 +111,7 @@ const  producto7 = new Producto(7,"Moto G52", 65000.00, "./recursos/productos/mo
 const  producto8 = new Producto(8,"Moto G82", 70000.00, "./recursos/productos/motoG82.png","celular");
 const  producto9 = new Producto(9,"Moto Edge30 Ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png","celular");
 const producto10 = new Producto(10,"Moto Edge30 Fusion", 80000.00, "./recursos/productos/motoEdge30fusionSe.png","celular");
-const producto11 = new Producto(11,"Moto Edge30 Fusion", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
+const producto11 = new Producto(11,"Moto Edge30 FusionSE", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
 const producto12 = new Producto(12,"Moto Edge30 Neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png","celular");
 const producto13 = new Producto(13,"Moto Edge30", 95000.00, "./recursos/productos/motoEdge30.png","celular");
 const producto14 = new Producto(14,"Moto Earbuds 3-s", 3000.00, "./recursos/productos/MotorolaEarbuds3S.png","celular");
@@ -119,7 +119,7 @@ const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/prod
 const producto16 = new Producto(16,"Auri Inalámbricos Moto XT220", 4000.00, "./recursos/productos/Auriculares Inalámbricos Moto XT220.png","auricular");
 const producto17 = new Producto(17,"Auriculares Moto XT120", 45000.00, "./recursos/productos/Auriculares Moto XT120.png","auricular");
 const producto18 = new Producto(18,"Auriculares Moto XT200", 5000.00, "./recursos/productos/Auriculares Moto XT200.png","auricular");
-const producto19 = new Producto(19,"Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp","auricular");
+const producto19 = new Producto(19,"Auriculares Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp","auricular");
 const producto20 = new Producto(20,"Moto Buds 085", 6000.00, "./recursos/productos/Moto Buds 085.webp","auricular");
 const producto21 = new Producto(21,"Moto Buds 250", 6500.00, "./recursos/productos/Moto Buds 250.png","auricular");
 const producto22 = new Producto(22,"Funda Violeta", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
@@ -158,12 +158,12 @@ productos.push(producto25);
 // FETCH 
 let listado = document.getElementById("listado");
 
-fetch("./stock.json")
+fetch("./descuentos.json")
       .then((response) => response.json())
       .then((response) => {
         response.forEach((producto) => {
-          const div = document.createElement("div");
-          div.innerHTML += `
+        //   const div = document.createElement("div");
+          contenedorDescuentos.innerHTML += `
             <div class="col-lg-3 col-md-6 col-sm-4">
                 <div class="card tarjetas__efecto" >
                     <img src="${producto.url}" class="card-img-top img-fluid" max-height 100px; alt="...">
@@ -185,7 +185,7 @@ fetch("./stock.json")
             </div>
         `;
 
-          listado.append(div);
+        //   listado.append(div);
         });
       });
 
@@ -194,8 +194,11 @@ fetch("./stock.json")
 
 productos.forEach(item => item.desplegarProducto());
 
+// EVENTO COMPRA
 
-fetch("./stock.json")
+productos.forEach(item => item.agregarEvento());
+
+fetch("./descuentos.json")
       .then((response) => response.json())
       .then((response) => {
         response.forEach((producto) => {
@@ -204,11 +207,6 @@ fetch("./stock.json")
             botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
         });
       });
-
-// EVENTO COMPRA
-
-productos.forEach(item => item.agregarEvento());
-
 
 //AGREGAR AL CARRITO
 
@@ -250,13 +248,7 @@ function agregarAlCarrito(producto) {
         localStorage.setItem('carrito', JSON.stringify(carrito))
         console.log(localStorage)
         carritoImprimir = localStorage.getItem("carrito"); 
-        console.log(carritoImprimir);
-        console.log(typeof carritoImprimir);
         prueba = JSON.parse(carritoImprimir)
-        console.log(typeof prueba);
-        console.log(prueba)
-        console.log(prueba.length)
-
 
         // console.log(carritoImprimir.length);
 
