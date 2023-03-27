@@ -1,17 +1,16 @@
 //CARRITO VACíO ARRAY
-
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-// let carrito = [];
 
 // ACTUALIZA CARRITO 
 const actualizarCarrito = () => {
     
     contenedorCarrito.innerHTML = "" 
     carrito.forEach((prod) => {
+
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
-        <p>${prod.nombre}</p>
+        <p class="w-50">${prod.nombre}</p>
         <p>Precio:$${prod.precio}</p>
         <p>Id:<span id="cantidad">${prod.id}</span></p>
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
@@ -72,15 +71,15 @@ class Producto {
     desplegarProducto() {
 
         contenedor.innerHTML += `
-            <div class="col-lg-3 col-md-6 col-sm-4" >
+            <div class="col-lg-3 col-md-6 col-sm-4">
                 <div class="card tarjetas__efecto" >
-                    <img src="${this.url}" class="card-img-top img-fluid" max-height 174px; alt="...">
-                    <div class="card-body f-5 m-1">
-                    <h5 class="card-title text-center f-3" ">${this.nombre}</h5>
+                    <img src="${this.url}" class="card-img-top img-fluid" max-height 100px; alt="...">
+                    <div class="card-body f-5 m-1 p-1">
+                    <h5 class="card-title text-center f-4 m-1 p-1" >${this.nombre}</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center fs-3 fw-bold">${this.precio}</li>
-                    <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li>
+                    <li class="list-group-item text-center fs-5 fw-bold">$${this.precio}</li>
+                    <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li> -->
                     <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
                     </button>
                     <h6 class="text-center">producto N°: ${this.id}</h6>
@@ -89,6 +88,7 @@ class Producto {
             </div>
         `;
     }
+    // let listado = document.getElementById("listado");
     agregarEvento() {
 
         let botonComprar = document.getElementById(`${this.id}`)
@@ -110,7 +110,7 @@ const  producto6 = new Producto(6,"Moto G42", 60000.00, "./recursos/productos/mo
 const  producto7 = new Producto(7,"Moto G52", 65000.00, "./recursos/productos/motoG52.png","celular");
 const  producto8 = new Producto(8,"Moto G82", 70000.00, "./recursos/productos/motoG82.png","celular");
 const  producto9 = new Producto(9,"Moto Edge30 Ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png","celular");
-const producto10 = new Producto(10,"Moto Edge30 Fusionse", 80000.00, "./recursos/productos/motoEdge30fusionSe.png","celular");
+const producto10 = new Producto(10,"Moto Edge30 Fusion", 80000.00, "./recursos/productos/motoEdge30fusionSe.png","celular");
 const producto11 = new Producto(11,"Moto Edge30 Fusion", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
 const producto12 = new Producto(12,"Moto Edge30 Neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png","celular");
 const producto13 = new Producto(13,"Moto Edge30", 95000.00, "./recursos/productos/motoEdge30.png","celular");
@@ -119,11 +119,11 @@ const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/prod
 const producto16 = new Producto(16,"Auri Inalámbricos Moto XT220", 4000.00, "./recursos/productos/Auriculares Inalámbricos Moto XT220.png","auricular");
 const producto17 = new Producto(17,"Auriculares Moto XT120", 45000.00, "./recursos/productos/Auriculares Moto XT120.png","auricular");
 const producto18 = new Producto(18,"Auriculares Moto XT200", 5000.00, "./recursos/productos/Auriculares Moto XT200.png","auricular");
-const producto19 = new Producto(19,"Auriculares Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp","auricular");
+const producto19 = new Producto(19,"Moto XT500+", 5500.00, "./recursos/productos/Auriculares Moto XT500+.webp","auricular");
 const producto20 = new Producto(20,"Moto Buds 085", 6000.00, "./recursos/productos/Moto Buds 085.webp","auricular");
 const producto21 = new Producto(21,"Moto Buds 250", 6500.00, "./recursos/productos/Moto Buds 250.png","auricular");
 const producto22 = new Producto(22,"Funda Violeta", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
-const producto23 = new Producto(23,"Funda Azul", 2000.00, "./recursos/productos/Funda Protectora Premium Azul.png","funda");
+const producto23 = new Producto(23,"Funda Azul", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
 const producto24 = new Producto(24,"Funda 30 Fusion", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Fusion.png","funda");
 const producto25 = new Producto(25,"Funda 30 Ultra", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Ultra.png","funda");
 
@@ -155,15 +155,60 @@ productos.push(producto23);
 productos.push(producto24);
 productos.push(producto25);
 
+// FETCH 
+let listado = document.getElementById("listado");
+
+fetch("./stock.json")
+      .then((response) => response.json())
+      .then((response) => {
+        response.forEach((producto) => {
+          const div = document.createElement("div");
+          div.innerHTML += `
+            <div class="col-lg-3 col-md-6 col-sm-4">
+                <div class="card tarjetas__efecto" >
+                    <img src="${producto.url}" class="card-img-top img-fluid" max-height 100px; alt="...">
+                    <div class="card-body f-5 m-1 p-1">
+                    <h5 class="card-title text-center f-4 m-1 p-1" >${producto.nombre}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                    <div class="d-flex f-5 p-1 justify-content-center" style="height: 40px;">
+                        <p class="list-group-item text-center text-decoration-line-through text-muted border border-0 rounded-4 m-0 p-0">$${producto.precioSinDescuento}</p>
+                        <p class="bg-danger bg-gradient text-white m-0 p-0 ms-2">20% off</p>
+                    </div>
+                    <li class="list-group-item text-center fs-5 bg-success p-2 text-white bg-opacity-75">$${producto.precio}</li>
+                    <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li> -->
+                    <button id=${producto.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${producto.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
+                    </button>
+                    <h6 class="text-center">producto N°: ${producto.id}</h6>
+                    </ul>
+                </div>
+            </div>
+        `;
+
+          listado.append(div);
+        });
+      });
 
 
 // DOM 
 
 productos.forEach(item => item.desplegarProducto());
 
+
+fetch("./stock.json")
+      .then((response) => response.json())
+      .then((response) => {
+        response.forEach((producto) => {
+            let botonComprar = document.getElementById(`${producto.id}`)
+            let productoFiltrado = response.filter( item => item.id === producto.id)
+            botonComprar.addEventListener('click', () => agregarAlCarrito(productoFiltrado[0]))
+        });
+      });
+
 // EVENTO COMPRA
 
 productos.forEach(item => item.agregarEvento());
+
 
 //AGREGAR AL CARRITO
 
@@ -191,9 +236,9 @@ function agregarAlCarrito(producto) {
 
     carrito.forEach((prod) => {
         const div = document.createElement('div')
-        div.className = ('productoEnCarrito')
+        div.className = ('productoEnCarrito justify-content-between')
         div.innerHTML = `
-        <p>${prod.nombre}</p>
+        <p class="w-50">${prod.nombre}</p>
         <p>Precio:$${prod.precio}</p>
         <p>Id:<span id="cantidad">${prod.id}</span></p>
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>
@@ -251,7 +296,7 @@ const eliminarDelCarrito = (prodId) => {
         const div = document.createElement('div')
         div.className = ('productoEnCarrito')
         div.innerHTML = `
-        <p>${prod.nombre}</p>
+        <p class="w-50">${prod.nombre}</p>
         <p>Precio:$${prod.precio}</p>
         <p>Id:<span id="cantidad">${prod.id}</span></p>
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar"><i class=" mb-3 bi bi-trash3"></i>

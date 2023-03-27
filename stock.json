@@ -1,0 +1,4 @@
+[
+    {"id": 26,"nombre": "Funda 30 Fusion", "precio": 1200.00, "precioSinDescuento": 1500.00,"url": "./recursos/productos/Funda Protectora - Edge 30 Fusion.png","tipo": "funda"},
+    {"id": 27,"nombre": "Funda 30 Ultra", "precio": 2400.00,"precioSinDescuento": 3000.00,"url": "./recursos/productos/Funda Protectora - Edge 30 Ultra.png","tipo": "funda"} 
+]
