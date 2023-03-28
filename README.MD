@@ -1,4 +1,4 @@
-# PRIMERA PRE-ENTREGA GODOY: 
+# PROYECTO FINAL CURSO JAVASCRIPT CODERHOUSE: 
 *Nombre del archivo: PrimeraPre-EntregaGodoy*
 
 ## Nombre del alumno

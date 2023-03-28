@@ -333,3 +333,23 @@ class Cliente {
     }
 }
 
+// FUNCION QUE RENDERIZA LETRA X LETRA 
+let titulo = "  ¡Descuentos imperdibles 20% OFF!"
+const elemento = document.getElementById("descuentosTitulo");
+
+
+function letraPorLetra(oracion) {
+    let tiempo = 0;
+    for (let i = 0; i < oracion.length; i++) {
+      setTimeout(() => {
+        elemento.innerHTML += oracion[i];
+      }, tiempo);
+      tiempo += 100;
+    }
+  
+    setTimeout(() => {
+      elemento.innerHTML += "<br>";
+    }, tiempo);
+}
+
+letraPorLetra(titulo)
