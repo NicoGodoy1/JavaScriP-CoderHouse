@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // FUNCIONES QUE CALCULAN LOS DESCUENTOS E INTERESES
-
 function efectivo(monto) {
     monto = monto - (monto*0.2)
     return monto
@@ -58,7 +57,6 @@ const botonVaciar = document.getElementById('vaciar-carrito')
 
 
 // DECLARACIÓN OBJETO PRODUCTO
-
 class Producto {
 
     constructor(id, nombre, precio, url, tipo) {
@@ -158,11 +156,13 @@ productos.push(producto25);
 // FETCH 
 let listado = document.getElementById("listado");
 
-fetch("./descuentos.json")
-      .then((response) => response.json())
-      .then((response) => {
-        response.forEach((producto) => {
-        //   const div = document.createElement("div");
+const traerDescuentos = async () => {
+  try {
+    const response = await fetch("./descuentos.json");
+    const data = await response.json();
+
+    data.forEach((producto) => {
+
           contenedorDescuentos.innerHTML += `
             <div class="col-lg-3 col-md-6 col-sm-4">
                 <div class="card tarjetas__efecto" >
@@ -185,17 +185,18 @@ fetch("./descuentos.json")
             </div>
         `;
 
-        //   listado.append(div);
-        });
-      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+traerDescuentos();
 
 // DOM 
-
 productos.forEach(item => item.desplegarProducto());
 
-// EVENTO COMPRA
-
+// EVENTOS COMPRA
 productos.forEach(item => item.agregarEvento());
 
 fetch("./descuentos.json")
@@ -209,7 +210,6 @@ fetch("./descuentos.json")
       });
 
 //AGREGAR AL CARRITO
-
 function agregarAlCarrito(producto) {
     Swal.fire({
         title: "Genial!",
@@ -226,9 +226,6 @@ function agregarAlCarrito(producto) {
 
     console.log(carrito)
     localStorage.setItem('carrito', JSON.stringify(carrito));
-
-    // montoTotal += producto.precio;
-    // precioTotal.innerText = montoTotal;
 
     contenedorCarrito.innerHTML = ""
 
@@ -250,14 +247,11 @@ function agregarAlCarrito(producto) {
         carritoImprimir = localStorage.getItem("carrito"); 
         prueba = JSON.parse(carritoImprimir)
 
-        // console.log(carritoImprimir.length);
-
 
     })
     precioTotal.innerText = carrito.reduce((acc, prod) => acc +  prod.precio, 0)
 
     contadorCarrito.innerText = prueba.length 
-    // contadorCarrito.innerText = localStorage.length 
 }
 
 
