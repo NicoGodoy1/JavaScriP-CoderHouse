@@ -81,7 +81,7 @@ class Producto {
                     <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li> -->
                     <button id=${this.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${this.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
                     </button>
-                    <h6 class="text-center">producto N°: ${this.id}</h6>
+                    <h6 class="text-center  text-muted  ">producto N°: ${this.id}</h6>
                     </ul>
                 </div>
             </div>
@@ -173,13 +173,13 @@ const traerDescuentos = async () => {
                     <ul class="list-group list-group-flush">
                     <div class="d-flex f-5 p-1 justify-content-center" style="height: 40px;">
                         <p class="list-group-item text-center text-decoration-line-through text-muted border border-0 rounded-4 m-0 p-0">$${producto.precioSinDescuento}</p>
-                        <p class="bg-danger bg-gradient text-white m-0 p-0 ms-2">20% off</p>
+                        <p class="bg-danger bg-gradient text-white ms-2 redondeado">20% off</p>
                     </div>
                     <li class="list-group-item text-center fs-5 bg-success p-2 text-white bg-opacity-75">$${producto.precio}</li>
                     <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li> -->
                     <button id=${producto.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${producto.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
                     </button>
-                    <h6 class="text-center">producto N°: ${producto.id}</h6>
+                    <h6 class="text-center text-muted fs-6 ">producto N°: ${producto.id}</h6>
                     </ul>
                 </div>
             </div>
