@@ -109,11 +109,11 @@ const  producto7 = new Producto(7,"Moto G52", 65000.00, "./recursos/productos/mo
 const  producto8 = new Producto(8,"Moto G82", 70000.00, "./recursos/productos/motoG82.png","celular");
 const  producto9 = new Producto(9,"Moto Edge30 Ultra", 75000.00, "./recursos/productos/motoEdge30ultra.png","celular");
 const producto10 = new Producto(10,"Moto Edge30 Fusion", 80000.00, "./recursos/productos/motoEdge30fusionSe.png","celular");
-const producto11 = new Producto(11,"Moto Edge30 FusionSE", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
+const producto11 = new Producto(11,"Moto Edge30 SE", 85000.00, "./recursos/productos/motoEdge30Fusion.png","celular");
 const producto12 = new Producto(12,"Moto Edge30 Neo", 90000.00, "./recursos/productos/motoEdge30ultraNeo.png","celular");
 const producto13 = new Producto(13,"Moto Edge30", 95000.00, "./recursos/productos/motoEdge30.png","celular");
-const producto14 = new Producto(14,"Moto Earbuds 3-s", 3000.00, "./recursos/productos/MotorolaEarbuds3S.png","celular");
-const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/productos/Motorola Earbuds 105.png","celular");
+const producto14 = new Producto(14,"Moto Earbuds 3-s", 3000.00, "./recursos/productos/MotorolaEarbuds3S.png","auricular");
+const producto15 = new Producto(15,"Moto Earbuds 105", 3500.00, "./recursos/productos/Motorola Earbuds 105.png","auricular");
 const producto16 = new Producto(16,"Auri Inalámbricos Moto XT220", 4000.00, "./recursos/productos/Auriculares Inalámbricos Moto XT220.png","auricular");
 const producto17 = new Producto(17,"Auriculares Moto XT120", 45000.00, "./recursos/productos/Auriculares Moto XT120.png","auricular");
 const producto18 = new Producto(18,"Auriculares Moto XT200", 5000.00, "./recursos/productos/Auriculares Moto XT200.png","auricular");
@@ -122,7 +122,7 @@ const producto20 = new Producto(20,"Moto Buds 085", 6000.00, "./recursos/product
 const producto21 = new Producto(21,"Moto Buds 250", 6500.00, "./recursos/productos/Moto Buds 250.png","auricular");
 const producto22 = new Producto(22,"Funda Violeta", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
 const producto23 = new Producto(23,"Funda Azul", 2000.00, "./recursos/productos/Funda Protectora Premium Violeta.png","funda");
-const producto24 = new Producto(24,"Funda 30 Fusion", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Fusion.png","funda");
+const producto24 = new Producto(24,"Funda Fusion", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Fusion.png","funda");
 const producto25 = new Producto(25,"Funda 30 Ultra", 1500.00, "./recursos/productos/Funda Protectora - Edge 30 Ultra.png","funda");
 
 
@@ -175,8 +175,8 @@ const traerDescuentos = async () => {
                         <p class="list-group-item text-center text-decoration-line-through text-muted border border-0 rounded-4 m-0 p-0">$${producto.precioSinDescuento}</p>
                         <p class="bg-danger bg-gradient text-white ms-2 redondeado">20% off</p>
                     </div>
-                    <li class="list-group-item text-center fs-5 bg-success p-2 text-white bg-opacity-75">$${producto.precio}</li>
-                    <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-1 fw-bold">¡Llega mañana!</li> -->
+                    <li class="list-group-item text-center fs-5 fw-bold pt-1">$${producto.precio}</li>
+                    <!-- <li class="list-group-item text-success bg-success bg-opacity-25 text-center p-5 fw-bold">¡Llega mañana!</li> -->
                     <button id=${producto.id} class="btn-morado align-items-center mx-2 my-2" type="button" dataValor="${producto.precio}">Agregar<i class="bi bi-cart3 ms-2"></i>
                     </button>
                     <h6 class="text-center text-muted fs-6 ">producto N°: ${producto.id}</h6>
@@ -291,12 +291,10 @@ const eliminarDelCarrito = (prodId) => {
         contenedorCarrito.appendChild(div)
         
         localStorage.setItem('carrito', JSON.stringify(carrito))
-        // localStorage.setItem(JSON.stringify(carrito))
 
     })
     contadorCarrito.innerText = carrito.length 
     precioTotal.innerText = (-1)*(carrito.reduce((acc, prod) => acc -  prod.precio, 0))
-    // contadorCarrito.innerText = localStorage.length 
 }
 
 
@@ -353,3 +351,96 @@ function letraPorLetra(oracion) {
 }
 
 letraPorLetra(titulo)
+
+// CHECKBOX PARA FILTRAR PRODUCTO POR TIPO 
+
+
+function filtrarPorTipo(tipo) {
+    return productos.filter(producto => producto.tipo === tipo);
+  }
+
+function enviar() {
+
+
+    let celular = document.getElementById("celular").checked;
+    let auricular = document.getElementById("auricular").checked;
+    let funda  = document.getElementById("funda").checked;
+
+
+    if (celular) {
+        contenedor.innerHTML = ""
+        const productosCelular = filtrarPorTipo('celular');
+
+        productosCelular.forEach(item => item.desplegarProducto());
+        productosCelular.forEach(item => item.agregarEvento());
+    }
+    
+        
+    if (auricular) {
+        contenedor.innerHTML = ""
+        const productosAuricular = filtrarPorTipo('auricular');
+
+        productosAuricular.forEach(item => item.desplegarProducto());
+        productosAuricular.forEach(item => item.agregarEvento());
+    }
+    
+    if (funda) {
+        contenedor.innerHTML = ""
+        const productosFunda = filtrarPorTipo('funda');
+
+        productosFunda.forEach(item => item.desplegarProducto());
+        productosFunda.forEach(item => item.agregarEvento());
+    }
+
+    if (funda && celular && auricular) {
+        contenedor.innerHTML = ""
+
+        const productosFunda = filtrarPorTipo('funda');
+        const productosAuricular = filtrarPorTipo('auricular');
+        const productosCelular = filtrarPorTipo('celular');
+
+        productosFunda.forEach(item => item.desplegarProducto());
+        productosFunda.forEach(item => item.agregarEvento())
+        productosAuricular.forEach(item => item.desplegarProducto());
+        productosAuricular.forEach(item => item.agregarEvento())
+        productosCelular.forEach(item => item.desplegarProducto());
+        productosCelular.forEach(item => item.agregarEvento());
+    }
+
+    if (funda && celular) {
+        contenedor.innerHTML = ""
+
+        const productosFunda = filtrarPorTipo('funda');
+        const productosCelular = filtrarPorTipo('celular');
+
+        productosFunda.forEach(item => item.desplegarProducto());
+        productosFunda.forEach(item => item.agregarEvento())
+        productosCelular.forEach(item => item.desplegarProducto());
+        productosCelular.forEach(item => item.agregarEvento());
+    }
+
+    if (funda && auricular) {
+        contenedor.innerHTML = ""
+
+        const productosFunda = filtrarPorTipo('funda');
+        const productosAuricular = filtrarPorTipo('auricular');
+
+        productosFunda.forEach(item => item.desplegarProducto());
+        productosFunda.forEach(item => item.agregarEvento())
+        productosAuricular.forEach(item => item.desplegarProducto());
+        productosAuricular.forEach(item => item.agregarEvento())
+    }
+
+    if (celular && auricular) {
+        contenedor.innerHTML = ""
+
+        const productosAuricular = filtrarPorTipo('auricular');
+        const productosCelular = filtrarPorTipo('celular');
+
+        productosAuricular.forEach(item => item.desplegarProducto());
+        productosAuricular.forEach(item => item.agregarEvento())
+        productosCelular.forEach(item => item.desplegarProducto());
+        productosCelular.forEach(item => item.agregarEvento());
+    }
+
+}
