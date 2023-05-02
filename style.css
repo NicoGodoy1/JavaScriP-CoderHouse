@@ -423,12 +423,17 @@ p {
     justify-content: space-between;
 }
 .productoEnCarrito:hover {
-    border-left: 5px solid rgb(68, 0, 153);
+    /* border-left: 5px solid rgb(68, 0, 153); */
+    border-left:  5px solid rgb(211, 0, 152);
+    background-image: linear-gradient(-90deg, rgb(211, 0, 152), rgb(68, 0, 153)) ;
+    color: white;
+    font-weight: bold;
 }
 
 .boton-eliminar {
-    background-color: white;
-    color: red;
+    background-color:transparent;
+    /* color: red; */
+    color: rgb(68, 0, 153);
     border: none;
     font-size: 15px;
     padding-bottom: 20px;
@@ -436,6 +441,8 @@ p {
 
 .boton-eliminar:hover {
     cursor: pointer;
+    color: white;
+    background-color: transparent;
 }
 .boton-eliminar:focus {
     outline: none;
