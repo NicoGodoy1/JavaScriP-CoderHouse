@@ -352,6 +352,16 @@ function letraPorLetra(oracion) {
 
 letraPorLetra(titulo)
 
+// setInterval(()  => {
+//     let tiempo = 0;
+//     for (let i = 0; i < oracion.length; i++) {
+//       setTimeout(() => {
+//         elemento.innerHTML += oracion[i];
+//       }, tiempo);
+//       tiempo += 100;
+//     }
+// }, 5000)
+
 // CHECKBOX PARA FILTRAR PRODUCTO POR TIPO 
 
 
